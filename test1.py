@@ -4,14 +4,13 @@
 # @File     : test1.py
 import numpy as np
 import librosa
-# import pyAudioAnalysis as paa
-# from pyAudioAnalysis import audioBasicIO as io
 import os
 import json
 import matplotlib.pyplot as plt
 import preprocessing
+import time
 
-path = '..\\数据集2\\pre2012'
+path = '..\\数据集2\\post2012'
 labelname = os.listdir(path)   # 获取该路径下的子文件名
 audio_data_set = dict()
 
@@ -35,44 +34,40 @@ for i in range(1):
                                 f=11000,
                                 fs=44100,
                                 plot=True)
-    downsample = preprocessing.downsample(avoid_overlap, 44100, 22000)
+    downsample = preprocessing.downsample(avoid_overlap, 44100, 22050)
+    start = time.perf_counter()
     silence_remove = preprocessing.silence_remove(
         downsample,
-        limit=0.0005,
+        limit=0.001,
         option=filter,
         pic=True,
         N=10,
-        f=600,
-        fs=22000,
+        f=100,
+        fs=22050,
         plot=True)
-    plt.figure(figsize=(8,8),dpi=300)
-    ax1 = plt.subplot2grid((4,4),(0,0), colspan=4, rowspan=2)
-    ax1.plot(downsample, 'r')
-    ax1.set_title('original signal')
-    ax1.set_xlabel('Time')
-    ax1.set_ylabel('value')
-    ax2 = plt.subplot2grid((4,4),(2,0), colspan=4, rowspan=2)
-    ax2.plot(silence_remove, 'b')
-    ax2.set_title('silence_remove_filter')
-    ax2.set_xlabel('Time')
-    ax2.set_ylabel('value')
-    plt.savefig('.\\picture\\silence_remove_filter.jpg')
-    plt.show()
+    end = time.perf_counter()
+    print(end-start)
+
+    start = time.perf_counter()
     silence_remove2 = preprocessing.silence_remove(
             downsample,
-            limit=0.0005,
+            limit=None,
+            option='SVM',
+            pic=True,
+            fs=22050,
+            st_win=np.array(0.02).astype('float32'),
+            st_step=np.array(0.01).astype('float32'),
+            smoothWindow=0.5,
+            weight=0.2,
+            plot=True)
+    end = time.perf_counter()
+    print(end-start)
+
+    start = time.perf_counter()
+    silence_remove3 = preprocessing.silence_remove(
+            downsample,
+            limit=np.max(downsample)/20,
             option='hilbert',
             pic=True)
-    plt.figure(figsize=(8,8),dpi=300)
-    ax1 = plt.subplot2grid((4,4),(0,0), colspan=4, rowspan=2)
-    ax1.plot(downsample, 'r')
-    ax1.set_title('original signal')
-    ax1.set_xlabel('Time')
-    ax1.set_ylabel('value')
-    ax2 = plt.subplot2grid((4,4),(2,0), colspan=4, rowspan=2)
-    ax2.plot(silence_remove2, 'b')
-    ax2.set_title('silence_remove_hilbert')
-    ax2.set_xlabel('Time')
-    ax2.set_ylabel('value')
-    plt.savefig('.\\picture\\silence_remove_hilbert.jpg')
-    plt.show()
+    end = time.perf_counter()
+    print(end-start)

@@ -22,7 +22,7 @@ def lp_filter(x, N, f, fs, plot=False):
     b, a = signal.butter(N, f, 'lowpass', fs=fs, output='ba')
     w, h = signal.freqz(b, a)
     if plot:
-        plt.figure(figsize=(8,6),dpi=300)
+        plt.figure()
         plt.plot(w / 2 / np.pi * fs, 20 * np.log10(abs(h)))  # 由于频域周期延拓和对称性，只需要0-pi的区间，对应频率0-fs/2
         plt.title('Butterworth filter frequency response')
         plt.ylabel('Amplitude [dB]')
