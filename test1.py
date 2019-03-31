@@ -10,10 +10,17 @@ import matplotlib.pyplot as plt
 import preprocessing
 import time
 
+'''
+主要用于测试预处理的效果
+'''
+
 path = '..\\数据集2\\post2012'
 labelname = os.listdir(path)   # 获取该路径下的子文件名
 audio_data_set = dict()
 
+downsample_rate = 22050
+frame_length = int(0.02 * downsample_rate)  # 20ms
+frame_overlap = frame_length // 2
 
 sample_num = []
 for i in range(1):
@@ -28,22 +35,22 @@ for i in range(1):
 
 for i in range(1):
     data = np.array(audio_data_set[labelname[i]][0])
-    pre_amphasis = preprocessing.pre_emphasis(data, 0.97)
+    pre_amphasis = preprocessing.pre_emphasis(data, 0.97, pic='pre_amphasis'+str(i))
     avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
                                 N=10,
                                 f=11000,
-                                fs=44100,
+                                fs=sample_rate,
                                 plot=True)
-    downsample = preprocessing.downsample(avoid_overlap, 44100, 22050)
+    downsample = preprocessing.downsample(avoid_overlap, sample_rate, downsample_rate)
     start = time.perf_counter()
     silence_remove = preprocessing.silence_remove(
         downsample,
         limit=0.001,
         option=filter,
-        pic=True,
+        pic='silence_remove_filter'+str(i),
         N=10,
         f=100,
-        fs=22050,
+        fs=downsample_rate,
         plot=True)
     end = time.perf_counter()
     print(end-start)
@@ -53,8 +60,8 @@ for i in range(1):
             downsample,
             limit=None,
             option='SVM',
-            pic=True,
-            fs=22050,
+            pic='silence_remove_SVM'+str(i),
+            fs=downsample_rate,
             st_win=np.array(0.02).astype('float32'),
             st_step=np.array(0.01).astype('float32'),
             smoothWindow=0.5,
@@ -68,6 +75,6 @@ for i in range(1):
             downsample,
             limit=np.max(downsample)/20,
             option='hilbert',
-            pic=True)
+            pic='silence_remove_hilbert'+str(i))
     end = time.perf_counter()
     print(end-start)

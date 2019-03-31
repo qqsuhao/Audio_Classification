@@ -14,10 +14,10 @@ from pyAudioAnalysis import audioSegmentation as seg
 '''
 
 
-def pre_emphasis(x, mu, pic=True):
+def pre_emphasis(x, mu, pic=None):
     z = x[2:] - mu * x[1:len(x) - 1]
     if pic:
-        fig = plt.figure()
+        plt.figure()
         # ax1 = plt.subplot2grid((4,4),(0,0), colspan=4, rowspan=2)
         ax1 = plt.subplot(211)
         ax1.plot(x, 'r', lw=0.5)
@@ -31,8 +31,9 @@ def pre_emphasis(x, mu, pic=True):
         ax2.set_xlabel('Time')
         ax2.set_ylabel('value')
         plt.tight_layout()
-        plt.savefig('.\\picture\\预加重.jpg')
-        plt.show()
+        plt.savefig(str(pic) + '.jpg')
+        plt.clf()
+        plt.close()
     return z
 
 
@@ -42,10 +43,16 @@ def avoid_overlap(x, **params):  # 收集参数
 
 
 def downsample(x, orig_fs, target_fs):
-    return lib.resample(x, orig_fs, target_fs, res_type='scipy', fix=True)
+    # kaiser_best明显要比scipy快
+    return lib.resample(
+        x,
+        orig_fs,
+        target_fs,
+        res_type='kaiser_best',
+        fix=True)
 
 
-def silence_remove(x, limit, option='filter', pic=True, **params):
+def silence_remove(x, limit, option='filter', pic=None, **params):
     '''
     :param x: 输入信号
     :param limit: 门限
@@ -75,8 +82,9 @@ def silence_remove(x, limit, option='filter', pic=True, **params):
             ax3.set_xlabel('Time')
             ax3.set_ylabel('value')
             plt.tight_layout()
-            plt.savefig('.\\picture\\silence_remove_hilbert.jpg')
-            plt.show()
+            plt.savefig(str(pic) + '.jpg')
+            plt.clf()
+            plt.close()
         return x[z > limit]
     elif option is 'SVM':
         domain = seg.silenceRemoval(x, **params)
@@ -102,8 +110,9 @@ def silence_remove(x, limit, option='filter', pic=True, **params):
             ax2.set_xlabel('Time')
             ax2.set_ylabel('value')
             plt.tight_layout()
-            plt.savefig('.\\picture\\silence_remove_SVM.jpg')
-            plt.show()
+            plt.savefig(str(pic) + '.jpg')
+            plt.clf()
+            plt.close()
         return y
     else:
         z = lp_filter(x, **params)
@@ -125,8 +134,9 @@ def silence_remove(x, limit, option='filter', pic=True, **params):
             ax3.set_xlabel('Time')
             ax3.set_ylabel('value')
             plt.tight_layout()
-            plt.savefig('.\\picture\\silence_remove_filter.jpg')
-            plt.show()
+            plt.savefig(str(pic) + '.jpg')
+            plt.clf()
+            plt.close()
         return x[z > limit]
 
 
@@ -134,5 +144,6 @@ def denoise_of_wave():
     pass
 
 
-def frame():
-    pass
+def frame(x, frame_length, hop_length):
+    # frames:np.ndarray [shape=(frame_length, N_FRAMES)]
+    return lib.util.frame(x, frame_length, hop_length)

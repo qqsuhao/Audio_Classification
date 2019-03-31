@@ -29,7 +29,9 @@ def lp_filter(x, N, f, fs, plot=False):
         plt.xlabel('freq[Hz]')
         plt.margins(0, 0.1)
         plt.grid(which='both', axis='both')
-        plt.savefig('.\\picture\\幅频响应.jpg')
+        plt.savefig(str(plot) + '幅频响应.jpg')
         plt.show()
+        plt.clf()
+        plt.close()
     return filtered
 
