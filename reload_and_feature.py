@@ -8,23 +8,21 @@ import numpy as np
 import csv
 import feature_extraction as fea
 import os
+import random
 
 
-def reload_and_feature():
-    saveprojectpath = '..\\仿真结果\\boy_and_girl_without_pre_amphasis_hilbert'
-    savedata = saveprojectpath + '\\data'
-    savepic = saveprojectpath + '\\pic'
-    savetestdata = savedata + '\\' + 'test_data'
-    savepreprocess = savedata + '\\' + 'preprocessing_result.csv'
-    savetrainfeature = savedata + '\\' + 'feature_result_train.csv'
-    savetestfeature = savedata + '\\' + 'test_data' + '\\' + 'feature_result_test'
-    path = '..\\boy_and_girl'  # 数据集路径
-    downsample_rate = 8000
-    frame_length = int(0.02 * downsample_rate)  # 20ms
-    frame_overlap = frame_length // 2
-    test_rate = 0.98   # 测试数据所占的比例
-
-
+def reload_and_feature(saveprojectpath,
+                        savedata,
+                        savepic,
+                        savetestdata,
+                        savepreprocess,
+                        savetrainfeature,
+                        savetestfeature,
+                        path,
+                        downsample_rate,
+                        frame_length,
+                        frame_overlap,
+                        test_rate):
     children = os.listdir(savetestdata)
     if len(children):
         for child in children:                # 为了防止多次测试导致测试样本数据文件夹里的文件重复，因此先删除
@@ -52,7 +50,7 @@ def reload_and_feature():
         sample_num.append(len(subfilename))
     test_set = []      # 每一类标签文件下的测试样本对应序号
     for i in sample_num:
-        test_set.append(np.random.randint(0, i, (int(i * test_rate), )))
+        test_set.append(random.sample(range(0, i), int(i*test_rate)))       # 随机挑选样本作为测试样本
 
 
     with open(savetrainfeature, 'w', encoding='utf-8') as csvfile:
@@ -84,4 +82,5 @@ def reload_and_feature():
                                          np.ones((features.shape[1], 1))], axis=1)
                 # 把特征对应的标签加进来; 把同一标签下对应的文件序号加进来。
                 csv_write.writerows(buffer)
-        print(row[0], row[1])
+
+        print('featuring:', row[0], row[1])
