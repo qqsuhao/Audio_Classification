@@ -8,9 +8,24 @@ import scipy.fftpack as fftpack
 import numpy as np
 import librosa as lib
 import pyAudioAnalysis.audioFeatureExtraction as pyaudio
+import matplotlib.pyplot as plt
+
+'''
+0.stft
+1.zero_crossing_rate
+2.energy
+3.entropy_of_energy
+4.spectral_centroid_spread
+5.spectral_entropy
+6.spectral_flux
+7.spectral_rolloff
+8.bandwidth
+9.mfccs
+10.rms
 
 
-def stft(x, **params):
+'''
+def stft(x, pic=None, **params):
     '''
     boxcar, triang, blackman, hamming, hann,bartlett, flattop, parzen, bohman, blackmanharris,
     nuttall, barthann, kaiser (needs beta),gaussian (needs standard deviation),
@@ -31,36 +46,18 @@ def stft(x, **params):
     :return: f:采样频率数组；t:段时间数组；Zxx:STFT结果
     '''
     f, t, zxx = signal.stft(x, **params)
+    plt.figure()
+    plt.pcolormesh(t, f, (np.abs(zxx)))
+    plt.colorbar()
+    plt.title('STFT Magnitude')
+    plt.ylabel('Frequency [Hz]')
+    plt.xlabel('Time [sec]')
+    plt.tight_layout()
+    if pic is not None:
+        plt.savefig(str(pic) + '.jpg')
+    plt.clf()
+    plt.close()
     return f, t, zxx
-
-
-def zero_crossing_rate(frames):
-    # 特征列向量
-    # array也是可迭代的，按照行迭代
-    # 使用map（func, array)相当于for循环遍历行
-    # frame每一列是一帧
-    feature = np.array(list(map(pyaudio.stZCR, frames.T)))
-    if feature.shape[0] == frames.shape[1]:
-        return feature
-    else:
-        raise Exception("zero_crossing_rate wrong")
-
-
-def energy(frames):
-    feature = np.array(list(map(pyaudio.stEnergy, frames.T)))
-    if feature.shape[0] == frames.shape[1]:
-        return feature
-    else:
-        raise Exception("energy wrong")
-
-
-def entropy_of_energy(frames, n_short_blocks=10):
-    feature = np.array(list(map(pyaudio.stEnergyEntropy, frames.T,
-                                n_short_blocks * np.ones((frames.shape[1], )))))
-    if feature.shape[0] == frames.shape[1]:
-        return feature
-    else:
-        raise Exception("entropy_of_energy wrong")
 
 
 def fft_single_spectral(x):
@@ -75,6 +72,35 @@ def fft_single_spectral(x):
     return X[1:len(x) / 2 + 1]
 
 
+def zero_crossing_rate(frames):
+    # 特征列向量
+    # array也是可迭代的，按照行迭代
+    # 使用map（func, array)相当于for循环遍历行
+    # frame每一列是一帧
+    feature = np.array(list(map(pyaudio.stZCR, frames.T)))
+    if feature.shape[0] == frames.shape[1]:
+        return np.array([feature])
+    else:
+        raise Exception("zero_crossing_rate wrong")
+
+
+def energy(frames):
+    feature = np.array(list(map(pyaudio.stEnergy, frames.T)))
+    if feature.shape[0] == frames.shape[1]:
+        return np.array([feature])
+    else:
+        raise Exception("energy wrong")
+
+
+def entropy_of_energy(frames, n_short_blocks=10):
+    feature = np.array(list(map(pyaudio.stEnergyEntropy, frames.T,
+                                n_short_blocks * np.ones((frames.shape[1], )).astype('int'))))
+    if feature.shape[0] == frames.shape[1]:
+        return np.array([feature])
+    else:
+        raise Exception("entropy_of_energy wrong")
+
+
 def spectral_centroid_spread(X, fs):
     '''
     :param X:库函数的输入参数是fft单边谱,使用fft函数求得频谱以后
@@ -87,7 +113,7 @@ def spectral_centroid_spread(X, fs):
     feature = np.array(
         list(map(pyaudio.stSpectralCentroidAndSpread, y.T, fs * np.ones((y.shape[1],)))))
     if feature.shape[0] == y.shape[1]:
-        return feature[:, 0], feature[:, 1]
+        return np.array([feature[:, 0]]), np.array([feature[:, 1]])
     else:
         raise Exception("spectral_centroid_spread wrong")
 
@@ -95,20 +121,20 @@ def spectral_centroid_spread(X, fs):
 def spectral_entropy(X, n_short_blocks=10):
     y = np.abs(X)
     feature = np.array(list(map(pyaudio.stSpectralEntropy,
-                                y.T, n_short_blocks * np.ones((y.shape[1],)))))
+                                y.T, n_short_blocks * np.ones((y.shape[1],)).astype('int'))))
     if feature.shape[0] == y.shape[1]:
-        return feature
+        return np.array([feature])
     else:
         raise Exception("spectral_entropy wrong")
 
 
 def spectral_flux(X):
     y1 = np.abs(X)
-    y2 = np.concatenate([np.zeros((X.shape[0], 1)), X[:, 1:]], axis=1)
+    y2 = np.concatenate([np.zeros((X.shape[0], 1)), y1[:, 1:]], axis=1)
     feature = np.array(
         list(map(pyaudio.stSpectralFlux, y1.T, y2.T)))
     if feature.shape[0] == y1.shape[1]:
-        return feature
+        return np.array([feature])
     else:
         raise Exception("spectral_flux wrong")
     pass
@@ -120,7 +146,7 @@ def spectral_rolloff(X, c, fs):
     feature = np.array(list(map(pyaudio.stSpectralRollOff, y.T,
                                 c * np.ones((y.shape[1],)), fs * np.ones((y.shape[1],)))))
     if feature.shape[0] == y.shape[1]:
-        return feature
+        return np.array([feature])
     else:
         raise Exception("spectral_flux wrong")
     pass
@@ -133,20 +159,29 @@ def bandwidth(X, freq, norm=True, p=2):
                    X=频谱图，freq=频谱图对应的频率, centroid=None, norm=True, p=2
     :return:
     '''
-    feature = lib.feature.spectral_bandwidth(X, freq, norm, p)
-    return feature[0, :]
+    y = np.abs(X)
+    feature = lib.feature.spectral_bandwidth(S=y, freq=freq, norm=norm, p=p)
+    return feature
 
 
-def mfccs(frames, fs, n_mfcc=13, dct_type=2):
+def mfccs(X, fs, nfft, n_mels=128, n_mfcc=13, dct_type=2):
     '''
     y=None, sr=22050, S=None, n_mfcc=20, dct_type=2, norm='ortho'
     '''
     # 每一个帧有13个MFCC特征
-    feature = np.zeros((n_mfcc, frames.shape[1]))
-    for i in range(frames.shape[1]):
-        feature[:, i]=lib.feature.mfcc(
-            y=frames[:, i], sr=fs, n_mfcc=n_mfcc, dct_type=dct_type)
+    y = np.abs(X)**2
+    S = lib.feature.melspectrogram(S=y, sr=fs, n_fft=nfft, n_mels=128)
+    feature = lib.feature.mfcc(S=lib.power_to_db(S), sr=fs, n_mfcc=n_mfcc, dct_type=dct_type)
     return feature
+
+
+def rms(X):
+    '''
+    :param X: stft频谱(复数)
+    :return:
+    '''
+    y = np.abs(X)
+    return lib.feature.rms(S=y)
 
 
 def chroma_vector():
@@ -154,8 +189,4 @@ def chroma_vector():
 
 
 def chroma_deviation():
-    pass
-
-
-def rms():
     pass

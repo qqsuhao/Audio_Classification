@@ -18,13 +18,13 @@ import csv
 '''
 
 
-def load_and_preprocess(saveprojectpath,
+def load_and_preprocess(amphasis,
+                        saveprojectpath,
                         savedata,
                         savepic,
                         savetestdata,
                         savepreprocess,
-                        savetrainfeature,
-                        savetestfeature,
+                        savefeature,
                         path,
                         downsample_rate,
                         frame_length,
@@ -53,12 +53,15 @@ def load_and_preprocess(saveprojectpath,
             audio_data, sample_rate = librosa.load(
                 subpath + '\\' + subfilename[i], sr=None, mono=True, res_type='kaiser_best')  # 读取文件
             ###################################################################
-
-            # pre_amphasis = preprocessing.pre_emphasis(audio_data, 0.97, pic=savepic + '\\' + 'pre_amphasis_'+str(j)+'_'+str(i))
-            pre_amphasis = audio_data
+            if amphasis:
+                pre_amphasis = preprocessing.pre_emphasis(audio_data, 0.97,
+                                                          pic=None)
+                                                          # pic=savepic + '\\' + 'pre_amphasis_'+str(j)+'_'+str(i))
+            else:
+                pre_amphasis = audio_data
             avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
                                                         N=10,
-                                                        f=4000,
+                                                        f=11025,
                                                         fs=sample_rate,
                                                         plot=False)
             downsample = preprocessing.downsample(
@@ -67,8 +70,8 @@ def load_and_preprocess(saveprojectpath,
                 downsample,
                 limit=np.max(downsample) / 20,
                 option='hilbert',
-                pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
-            #     pic=None)
+                # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
+                pic=None)
             # silence_remove = preprocessing.silence_remove(
             #     downsample,
             #     limit=0.02,
