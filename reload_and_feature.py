@@ -37,6 +37,8 @@ def reload_and_feature(feature_type,
     fe.bandwidth,                      # 8
     fe.mfccs,                          # 9
     fe.rms                             # 10
+    fe.stfrft                          # 11
+    fe.frft_mfcc                       # 12
     '''
     labelname = os.listdir(path)       # 获取该数据集路径下的子文件名
     if not os.path.exists(savefeature):
@@ -93,6 +95,13 @@ def reload_and_feature(feature_type,
             elif i == 10:
                 feature10 = fe.rms(stft)
                 feature_list.append(feature10)
+            elif i == 11:
+                feature11 = fe.stfrft(frames, p=0.95)
+                feature_list.append(feature11)
+            elif i == 12:
+                tmp = fe.stfrft(frames, p=0.95)
+                feature12 = fe.frft_MFCC(S=tmp, fs=downsample_rate, n_fft=frame_length)
+                feature_list.append(feature12)
 
         features = np.concatenate(
             [j for j in feature_list], axis=0)    # 我很欣赏这一句代码

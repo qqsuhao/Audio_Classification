@@ -102,21 +102,32 @@ def cm_plot(y_true, y_pred, pic=None):
     plt.close()
 
 
-def specgram(x, picname=None, **params):
+def picplot(x, y, title, xlabel, ylabel, pic=None):
     '''
-    :param x:
-    :param picname:
-    :param params: x_coords=None, y_coords=None, x_axis=None, y_axis=None, sr=22050, hop_length=512,
-                             fmin=None, fmax=None, bins_per_octave=12, ax=None, **kwargs
-    :return:
+    用于绘制特征提取的某些特征的图像。
     '''
-    lib.display.specshow(x, **params)
-    plt.colorbar()
-    plt.title('Magnitude')
-    plt.ylabel('Frequency [Hz]')
-    plt.xlabel('Time [sec]')
+    plt.figure()
+    plt.plot(x, y)
+    plt.title(str(title))
+    plt.xlabel(str(xlabel))
+    plt.ylabel(str(ylabel))
     plt.tight_layout()
-    if picname is not None:
-        plt.savefig(str(picname) + '.jpg')
+    if pic is not None:
+        plt.savefig(str(pic) + '.jpg')
+    plt.clf()
+    plt.close()
+
+
+def stfrft_specgram(S, pic=None):
+    f = np.arange(0, S.shape[0], 1)
+    t = np.arange(0, S.shape[1], 1)
+    plt.pcolormesh(t, f, (np.abs(S)))
+    plt.colorbar()
+    plt.title('STFRFT Magnitude')
+    plt.ylabel('Fractional Frequency')
+    plt.xlabel('Time')
+    plt.tight_layout()
+    if pic is not None:
+        plt.savefig(str(pic) + '.jpg')
     plt.clf()
     plt.close()

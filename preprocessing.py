@@ -147,3 +147,4 @@ def denoise_of_wave():
 def frame(x, frame_length, hop_length):
     # frames:np.ndarray [shape=(frame_length, N_FRAMES)]
     return lib.util.frame(x, frame_length, hop_length)
+

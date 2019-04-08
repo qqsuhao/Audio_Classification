@@ -9,6 +9,8 @@ import numpy as np
 import librosa as lib
 import pyAudioAnalysis.audioFeatureExtraction as pyaudio
 import matplotlib.pyplot as plt
+import frft
+from librosa import filters
 
 '''
 0.stft
@@ -22,6 +24,8 @@ import matplotlib.pyplot as plt
 8.bandwidth
 9.mfccs
 10.rms
+11.stfrft
+12.frft_mfcc
 
 
 '''
@@ -190,3 +194,26 @@ def chroma_vector():
 
 def chroma_deviation():
     pass
+
+
+def stfrft(frames, p=1):
+    stfrft = np.array(list(map(frft.frft, frames.T, p*np.ones((frames.shape[1], )).astype('float32'))))
+    if frames.shape[0] % 2 == 0:
+        stfrft = stfrft[:, frames.shape[0]/2-1:]
+    else:
+        stfrft = stfrft[:, frames.shape[0]//2+1:]
+    stfrft = stfrft.T
+    if stfrft.shape[1] == frames.shape[1]:
+        return stfrft
+    else:
+        raise Exception("stfrft wrong")
+
+
+def frft_MFCC(S, fs, n_fft, n_mfcc=13, n_mels=128, dct_type=2, norm='ortho', power=2):
+
+    # Build a Mel filter
+    S = np.abs(S)**power
+    mel_basis = filters.mel(sr=fs, n_fft=n_fft, n_mels=n_mels, fmin=0.0, fmax=None, htk=False, norm=1)
+    melspectrogram = np.dot(mel_basis, S)
+    S_db = lib.core.power_to_db(melspectrogram)
+    return fftpack.dct(S_db, axis=0, type=dct_type, norm=norm)[:n_mfcc]
