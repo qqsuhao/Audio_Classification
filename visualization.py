@@ -8,10 +8,12 @@ import matplotlib.pyplot as plt
 import librosa as lib
 from sklearn.metrics import confusion_matrix
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.decomposition import PCA
 
 
-def stft_specgram(x, picname=None, **params):
-    f, t, zxx = stft(x, **params)
+def stft_specgram(f, t, zxx, picname=None):
     plt.figure()
     plt.pcolormesh(t, f, (np.abs(zxx)))
     plt.colorbar()
@@ -23,10 +25,12 @@ def stft_specgram(x, picname=None, **params):
         plt.savefig(str(picname) + '.jpg')
     plt.clf()
     plt.close()
-    return t, f, zxx
 
 
 def fft_specgram(f, t, S, picname=None):
+    '''
+    用于绘制fft单边时频像
+    '''
     if len(S.shape) is not 2:
         return
     for i in range(S.shape[1]):
@@ -118,7 +122,47 @@ def picplot(x, y, title, xlabel, ylabel, pic=None):
     plt.close()
 
 
+def picfftandpitch(x,y1,y2,title, xlabel, ylabel, pic=None):
+    '''
+    绘制hold on
+    '''
+    plt.figure()
+    plt.plot(x, y1, 'r')
+    plt.axvline(y2, c='b')
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.tight_layout()
+    if pic is not None:
+        plt.savefig(str(pic) + '.jpg')
+    plt.clf()
+    plt.close()
+
+
+
+
+def specgram(X, title, xlabel, ylabel, pic=None):
+    '''
+    绘制二维图
+    '''
+    f = np.arange(0, X.shape[0], 1)
+    t = np.arange(0, X.shape[1], 1)
+    plt.pcolormesh(t, f, X)
+    plt.colorbar()
+    plt.title(title)
+    plt.ylabel(ylabel)
+    plt.xlabel(xlabel)
+    plt.tight_layout()
+    if pic is not None:
+        plt.savefig(str(pic) + '.jpg')
+    plt.clf()
+    plt.close()
+
+
 def stfrft_specgram(S, pic=None):
+    '''
+    绘制短时分数阶傅里叶变换
+    '''
     f = np.arange(0, S.shape[0], 1)
     t = np.arange(0, S.shape[1], 1)
     plt.pcolormesh(t, f, (np.abs(S)))
@@ -131,3 +175,80 @@ def stfrft_specgram(S, pic=None):
         plt.savefig(str(pic) + '.jpg')
     plt.clf()
     plt.close()
+
+
+def pca_plot(x, pca_model=None, dim=2, svd_solver='auto', pic=None):
+    '''
+    :param pca_model: 如果输入一个已经训练好的pca模型，那么新的数据就在这个模型上降维
+    :param x: 行数为样本数，列数为属性数目
+    :param dim: 目标维度
+    :param svd_solver: svd分解的方法
+    :param pic: 是否绘图
+    :return:
+    '''
+    if pca_model is not None:
+        newx = pca_model.transform(x)
+    else:
+        if dim > x.shape[1]:
+            raise Exception('dim wrong')
+            return
+        model = PCA(n_components=dim, svd_solver=svd_solver)
+        model.fit(x)
+        newx = model.fit_transform(x)
+    if pic is not None:
+        if dim == 2:
+            plt.figure()
+            plt.scatter(newx[:,0], newx[:,1], '*')
+            plt.title("pca dimensions to 2")
+            plt.savefig(str(pic) + '_pca.jpg')
+#            plt.show()
+            plt.clf()
+            plt.close()
+        elif dim == 3:
+            fig = plt.figure()
+            ax = Axes3D(fig)
+            ax.scatter(newx[:,0], newx[:,1], newx[:,2], '*')
+            plt.title("pca dimensions to 3")
+            plt.savefig(str(pic) + '_pca.jpg')
+            # plt.show()
+            plt.clf()
+            plt.close()
+    return model
+
+
+def pca_2plot(x1, x2, dim=2, svd_solver='auto', pic=None):
+    '''
+    :param x1:
+    :param x2:
+    :param dim:
+    :param svd_solver:
+    :param pic:
+    :return:
+    '''
+    if dim > x1.shape[1] or dim > x2.shape[1]:
+        raise Exception('dim wrong')
+        return
+    model = PCA(n_components=dim, svd_solver=svd_solver)
+    model.fit(x1)
+    newx1 = model.fit_transform(x1)
+    newx2 = model.transform(x2)
+    if pic is not None:
+        if dim == 2:
+            plt.figure()
+            plt.scatter(newx1[:,0], newx1[:,1], 'r*')
+            plt.scatter(newx2[:,0], newx2[:,1], 'b*')
+            plt.title("pca dimensions to 2")
+            plt.savefig(str(pic) + '_pca.jpg')
+            # plt.show()
+            plt.clf()
+            plt.close()
+        elif dim == 3:
+            fig = plt.figure()
+            ax = Axes3D(fig)
+            ax.scatter(newx1[:,0], newx1[:,1], newx1[:,2], 'r*')
+            ax.scatter(newx2[:,0], newx2[:,1], newx2[:,2], 'b*')
+            plt.title("pca dimensions to 3")
+            plt.savefig(str(pic) + '_pca.jpg')
+            plt.show()
+            # plt.clf()
+            # plt.close()

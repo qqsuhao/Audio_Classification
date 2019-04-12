@@ -14,9 +14,12 @@ from scipy import stats
 import visualization as visual
 import random
 import csv
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+import matplotlib.pyplot as plt
 
 
 def reload_and_classify(order,
+                        PCAornot,
                         saveprojectpath,
                         savedata,
                         savepic,
@@ -77,14 +80,43 @@ def reload_and_classify(order,
     train_Y = train[:, -2]
 
 
+    #PCA
+    if PCAornot:
+        pass
+        # for i in range(len(labelname)):
+        #     # tmp = [0,1,2,3,5,6,9,10,11,12,13,14,15]
+        #     label_i = np.where(train_Y == i)
+        #     pca_input = train_X[label_i, :]   # 得到一个三维矩阵
+        #     pca_input = pca_input[0,:,:]      # 转换成二维
+        #     label_i_pca = visual.pca_plot(pca_model=None, x=pca_input, dim=3, pic=savepic+'\\'+str(order)+'_label_'+str(i))
+        #     print(label_i_pca.explained_variance_ratio_)
+
+        # label_0 = np.where(train_Y == 0)
+        # x1 = train_X[label_0, :]
+        # x1 = x1[0,:,:]
+        # label_1 = np.where(train_Y == 1)
+        # x2 = train_X[label_1, :]
+        # x2 = x2[0,:,:]
+        # visual.pca_2plot(x1=x1, x2=x2, dim=3, svd_solver='auto', pic=savepic+'\\'+str(order)+'_label_'+str(i))
+
+
+    lda = LinearDiscriminantAnalysis(n_components=3)
+    lda.fit(train_X, train_Y)
+    X_new = lda.fit_transform(train_X, train_Y)
+    plt.scatter(np.arange(0, len(X_new)), X_new, marker='o',c=train_Y)
+    plt.show()
+
+
     # 训练KNN分类器
-    N = 5
+    N = 3
     neigh = KNeighborsClassifier(
-        n_neighbors=5,
+        n_neighbors=N,
         algorithm='brute',
-        metric='euclidean')
+        metric='euclidean',
+        weights='distance')
     # 使用我自己的KNN时，输入的特征矩阵列数代表样本数.使用库函数的KNN时正好相反。
-    neigh.fit(train_X, train_Y)
+    # neigh.fit(train_X, train_Y)
+    neigh.fit(X_new, train_Y)
 
 
     # 读取测试数据
@@ -99,11 +131,20 @@ def reload_and_classify(order,
             test = test.values.astype('float32')
             test_X = test[:, 0:(test.shape[1] - 2)]
             test_Y = test[0, -2]
-            predictions = neigh.predict(test_X)
+
+            # predictions = neigh.predict(test_X)
+
+            x_new = lda.transform(test_X)
+            predictions = neigh.predict(x_new)
+            # predictions = lda.predict(test_X)
+
             prediction, label_count = stats.mode(predictions)
             predict_label.append(prediction[0])  # 如果不用[0]，会导致存入数组对象而不是数
             original_label.append(test_Y)
             predict_confidence.append(label_count / test_X.shape[0])
+
+
+
 
     # 进行性能分析
     accuracy = accuracy_score(original_label, predict_label)  # 预测准确率

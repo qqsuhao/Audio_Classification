@@ -52,7 +52,7 @@ def downsample(x, orig_fs, target_fs):
         fix=True)
 
 
-def silence_remove(x, limit, option='filter', pic=None, **params):
+def silence_remove(x, limit, fs, option='filter', pic=None, **params):
     '''
     :param x: 输入信号
     :param limit: 门限
@@ -79,6 +79,30 @@ def silence_remove(x, limit, option='filter', pic=None, **params):
             ax3 = plt.subplot(313)
             ax3.plot(x[z > limit], 'g')
             ax3.set_title('silence_remove_hilbert')
+            ax3.set_xlabel('Time')
+            ax3.set_ylabel('value')
+            plt.tight_layout()
+            plt.savefig(str(pic) + '.jpg')
+            plt.clf()
+            plt.close()
+        return x[z > limit]
+    elif option is 'HF':
+        z = hilbert_filter(x=x, fs=fs, pic=pic)
+        if pic:
+            plt.figure()
+            ax1 = plt.subplot(311)
+            ax1.plot(x, 'r')
+            ax1.set_title('original signal')
+            ax1.set_xlabel('Time')
+            ax1.set_ylabel('value')
+            ax2 = plt.subplot(312)
+            ax2.plot(z, 'b')
+            ax2.set_title('envelope')
+            ax2.set_xlabel('Time')
+            ax2.set_ylabel('value')
+            ax3 = plt.subplot(313)
+            ax3.plot(x[z > limit], 'g')
+            ax3.set_title('silence_remove_hilbert_filter')
             ax3.set_xlabel('Time')
             ax3.set_ylabel('value')
             plt.tight_layout()

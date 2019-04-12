@@ -30,8 +30,38 @@ def lp_filter(x, N, f, fs, plot=False):
         plt.margins(0, 0.1)
         plt.grid(which='both', axis='both')
         plt.savefig(str(plot) + '幅频响应.jpg')
-        plt.show()
         plt.clf()
         plt.close()
     return filtered
+
+
+def hilbert_filter(x, fs, order=201, pic=None):
+    co = signal.firwin(numtaps=201,
+                       cutoff=[0.001*fs/2/np.pi, (np.pi-0.001)*fs/2/np.pi],
+                       width=None,
+                       window='hann',
+                       pass_zero=False,
+                       scale=True,
+                       nyq=None,
+                       fs=fs)
+    out = signal.filtfilt(b=co, a=1, x=x, padlen=int((order-1)/2))
+    envolope = np.sqrt(out**2 + x**2)
+    if pic is not None:
+        w, h = signal.freqz(b=co, a=1, worN=2048, whole=False, plot=None, fs=2*np.pi)
+        fig, ax1 = plt.subplots()
+        ax1.set_title('hilbert filter frequency response')
+        ax1.plot(w, 20 * np.log10(abs(h)), 'b')
+        ax1.set_ylabel('Amplitude [dB]', color='b')
+        ax1.set_xlabel('Frequency [rad/sample]')
+        ax2 = ax1.twinx()
+        angles = np.unwrap(np.angle(h))
+        ax2.plot(w, angles, 'g')
+        ax2.set_ylabel('Angle (radians)', color='g')
+        ax2.grid()
+        ax2.axis('tight')
+        plt.savefig(pic + 'hilbert_filter.jpg')
+        plt.clf()
+        plt.close()
+    return envolope
+
 

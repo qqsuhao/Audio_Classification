@@ -6,10 +6,7 @@
 import numpy as np
 import librosa
 import os
-import matplotlib.pyplot as plt
 import preprocessing
-import time
-import visualization as visual
 import csv
 
 '''
@@ -59,17 +56,25 @@ def load_and_preprocess(amphasis,
                                                           # pic=savepic + '\\' + 'pre_amphasis_'+str(j)+'_'+str(i))
             else:
                 pre_amphasis = audio_data
-            avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
-                                                        N=10,
-                                                        f=11025,
-                                                        fs=sample_rate,
-                                                        plot=False)
-            downsample = preprocessing.downsample(
-                avoid_overlap, sample_rate, downsample_rate)
+            # avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
+            #                                             N=20,
+            #                                             f=11025,
+            #                                             fs=sample_rate,
+            #                                             plot=False)
+            # downsample = preprocessing.downsample(
+            #     avoid_overlap, sample_rate, downsample_rate)
+            downsample = pre_amphasis
+            # silence_remove = preprocessing.silence_remove(
+            #     downsample,
+            #     limit=np.max(downsample) / 20 * 3,
+            #     option='hilbert',
+            #     # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
+            #     pic=None)
             silence_remove = preprocessing.silence_remove(
-                downsample,
-                limit=np.max(downsample) / 20,
-                option='hilbert',
+                x=downsample,
+                limit=np.max(downsample) / 20 * 2,
+                fs=downsample_rate,
+                option='HF',
                 # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
                 pic=None)
             # silence_remove = preprocessing.silence_remove(

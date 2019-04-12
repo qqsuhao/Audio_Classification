@@ -11,7 +11,7 @@ import preprocessing
 import time
 
 '''
-主要用于测试预处理的效果
+主要用于测试静音消除的效果
 '''
 
 path = '..\\数据集2\\post2012'

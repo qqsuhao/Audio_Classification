@@ -5,8 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feature_extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load_and_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/load_and_preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_filter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reload_and_classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/reload_and_classify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reload_and_feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/reload_and_feature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,32 +20,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/code$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1553949822268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$Doctests_in_frft__1_.coverage" NAME="Doctests in frft (1) Coverage Results" MODIFIED="1554540519661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1553866576532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$reload_and_classify.coverage" NAME="reload_and_classify Coverage Results" MODIFIED="1554016770508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$pitchtracking.coverage" NAME="pitchtracking Coverage Results" MODIFIED="1554617780590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code/frft_pic" />
-    <SUITE FILE_PATH="coverage/code$reload_and_classify__1_.coverage" NAME="reload_and_classify (1) Coverage Results" MODIFIED="1554044305346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$filter.coverage" NAME="filter Coverage Results" MODIFIED="1553696210591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$pitchtracking__1_.coverage" NAME="pitchtracking (1) Coverage Results" MODIFIED="1554621599958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$confusion_matrix.coverage" NAME="confusion_matrix Coverage Results" MODIFIED="1554375489960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$preprocess_filter.coverage" NAME="preprocess_filter Coverage Results" MODIFIED="1553734327155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$control.coverage" NAME="control Coverage Results" MODIFIED="1554540101722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$testfrft.coverage" NAME="testfrft Coverage Results" MODIFIED="1554542395540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1554015582980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1553735745191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$harmonic_test.coverage" NAME="harmonic_test Coverage Results" MODIFIED="1554359004172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1553825778097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$Doctests_in_frft.coverage" NAME="Doctests in frft Coverage Results" MODIFIED="1554540300114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$reload_and_classify.coverage" NAME="reload_and_classify Coverage Results" MODIFIED="1554016770508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$load_and_preprocess.coverage" NAME="load_and_preprocess Coverage Results" MODIFIED="1554029246200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$subplot2grid.coverage" NAME="subplot2grid Coverage Results" MODIFIED="1553734014610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$reload_and_feature.coverage" NAME="reload_and_feature Coverage Results" MODIFIED="1554283516667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1553735745191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$colorful_point.coverage" NAME="colorful_point Coverage Results" MODIFIED="1554122821454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$control.coverage" NAME="control Coverage Results" MODIFIED="1555067032420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$preprocess_filter.coverage" NAME="preprocess_filter Coverage Results" MODIFIED="1553734327155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$reload_and_classify__1_.coverage" NAME="reload_and_classify (1) Coverage Results" MODIFIED="1554044305346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$testfrft.coverage" NAME="testfrft Coverage Results" MODIFIED="1554542395540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$feature_extraction.coverage" NAME="feature_extraction Coverage Results" MODIFIED="1554277360680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$hilberfilter.coverage" NAME="hilberfilter Coverage Results" MODIFIED="1554999546162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1553949822268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$harmonic_test.coverage" NAME="harmonic_test Coverage Results" MODIFIED="1554359004172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$librosa_silence_remove.coverage" NAME="librosa_silence_remove Coverage Results" MODIFIED="1554623421602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code/frft_pic" />
+    <SUITE FILE_PATH="coverage/code$Doctests_in_frft.coverage" NAME="Doctests in frft Coverage Results" MODIFIED="1554540300114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$Doctests_in_frft__1_.coverage" NAME="Doctests in frft (1) Coverage Results" MODIFIED="1554540519661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$pitchtracking.coverage" NAME="pitchtracking Coverage Results" MODIFIED="1554617780590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code/frft_pic" />
+    <SUITE FILE_PATH="coverage/code$reload_and_feature.coverage" NAME="reload_and_feature Coverage Results" MODIFIED="1554897112639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/code$librosa_silence_remove__1_.coverage" NAME="librosa_silence_remove (1) Coverage Results" MODIFIED="1554623686394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$test5.coverage" NAME="test5 Coverage Results" MODIFIED="1554016933575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$subplot2grid.coverage" NAME="subplot2grid Coverage Results" MODIFIED="1553734014610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
     <SUITE FILE_PATH="coverage/code$visualization.coverage" NAME="visualization Coverage Results" MODIFIED="1554373187522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/code$librosa_silence_remove.coverage" NAME="librosa_silence_remove Coverage Results" MODIFIED="1554623421602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code/frft_pic" />
-    <SUITE FILE_PATH="coverage/code$colorful_point.coverage" NAME="colorful_point Coverage Results" MODIFIED="1554122821454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
-    <SUITE FILE_PATH="coverage/code$feature_extraction.coverage" NAME="feature_extraction Coverage Results" MODIFIED="1554277360680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$preprocess_test.coverage" NAME="preprocess_test Coverage Results" MODIFIED="1554884819688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$filter.coverage" NAME="filter Coverage Results" MODIFIED="1553696210591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
+    <SUITE FILE_PATH="coverage/code$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1553866576532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/code$confusion_matrix.coverage" NAME="confusion_matrix Coverage Results" MODIFIED="1554375489960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_code" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -63,76 +69,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_code/testfrft.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="e#98#109#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/feature_extraction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="26" selection-start-line="26" selection-end-line="28" />
-              <folding>
-                <element signature="e#109#138#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/filters.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="252" column="50" lean-forward="true" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualization.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="122" column="35" lean-forward="true" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
-              <folding>
-                <element signature="e#103#135#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reload_and_feature.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
+            <state relative-caret-position="420">
+              <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+              <folding>
+                <element signature="e#110#128#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/control.py">
+        <entry file="file://$PROJECT_DIR$/reload_and_classify.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="e#98#131#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/load_and_preprocess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1311">
-              <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+            <state relative-caret-position="154">
+              <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
               <folding>
                 <element signature="e#110#128#0" expanded="true" />
               </folding>
@@ -141,9 +93,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/preprocess_filter.py">
+        <entry file="file://$PROJECT_DIR$/control.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-69" />
+            <state relative-caret-position="301">
+              <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+              <folding>
+                <element signature="e#98#131#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -153,6 +110,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Setup Script" />
       </list>
     </option>
   </component>
@@ -167,6 +125,8 @@
       <find>savetrainfeature</find>
       <find>melspectrogram</find>
       <find>test_data</find>
+      <find>Mel</find>
+      <find>\\</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,17 +140,13 @@
         <option value="$PROJECT_DIR$/silence_remove_SVN.py" />
         <option value="$PROJECT_DIR$/visuallization.py" />
         <option value="$PROJECT_DIR$/classifier.py" />
-        <option value="$PROJECT_DIR$/test1.py" />
         <option value="$PROJECT_DIR$/test2.py" />
-        <option value="$PROJECT_DIR$/preprocess_filter.py" />
         <option value="$PROJECT_DIR$/test4.py" />
         <option value="$PROJECT_DIR$/test3.py" />
         <option value="$PROJECT_DIR$/test_code/reload_and_classify.py" />
         <option value="$PROJECT_DIR$/test_code/test5.py" />
         <option value="$PROJECT_DIR$/test_code/colorful_point.py" />
         <option value="$PROJECT_DIR$/test_code/harmonic_test.py" />
-        <option value="$PROJECT_DIR$/reload_and_classify.py" />
-        <option value="$PROJECT_DIR$/load_and_preprocess.py" />
         <option value="$PROJECT_DIR$/test_code/confusion_matrix.py" />
         <option value="$PROJECT_DIR$/test_code/frft.py" />
         <option value="$PROJECT_DIR$/test_code/testfrft.py" />
@@ -198,18 +154,26 @@
         <option value="$PROJECT_DIR$/test_code/pitchtracking.py" />
         <option value="$PROJECT_DIR$/test_code/frft_pic/librosa_silence_remove.py" />
         <option value="$PROJECT_DIR$/test_code/librosa_silence_remove.py" />
+        <option value="$PROJECT_DIR$/test1.py" />
+        <option value="$PROJECT_DIR$/preprocess_test.py" />
+        <option value="C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioFeatureExtraction.py" />
         <option value="$PROJECT_DIR$/preprocessing.py" />
+        <option value="$PROJECT_DIR$/test_code/hilberfilter.py" />
+        <option value="$PROJECT_DIR$/preprocess_filter.py" />
+        <option value="$PROJECT_DIR$/load_and_preprocess.py" />
         <option value="$PROJECT_DIR$/visualization.py" />
-        <option value="$PROJECT_DIR$/feature_extraction.py" />
         <option value="$PROJECT_DIR$/reload_and_feature.py" />
+        <option value="$PROJECT_DIR$/feature_extraction.py" />
         <option value="$PROJECT_DIR$/control.py" />
+        <option value="$PROJECT_DIR$/reload_and_classify.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
+    <option name="x" value="122" />
+    <option name="y" value="-24" />
     <option name="width" value="1220" />
-    <option name="height" value="1310" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -258,7 +222,51 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.librosa_silence_remove (1)">
+  <component name="RunManager" selected="Python.control">
+    <configuration name="control" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/control.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hilberfilter" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_code/hilberfilter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="librosa_silence_remove (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -281,7 +289,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="librosa_silence_remove" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="preprocess_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -289,12 +297,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_code/frft_pic" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="I:\本科毕业设计\code\test_code\librosa_silence_remove.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocess_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -303,7 +311,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pitchtracking (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="reload_and_feature" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -311,58 +319,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_code" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_code/pitchtracking.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reload_and_feature.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pitchtracking" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_code/frft_pic" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="I:\本科毕业设计\code\test_code\pitchtracking.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="testfrft" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_code" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_code/testfrft.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -370,19 +334,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.testfrft" />
-      <item itemvalue="Python.pitchtracking" />
-      <item itemvalue="Python.pitchtracking (1)" />
-      <item itemvalue="Python.librosa_silence_remove" />
       <item itemvalue="Python.librosa_silence_remove (1)" />
+      <item itemvalue="Python.control" />
+      <item itemvalue="Python.preprocess_test" />
+      <item itemvalue="Python.reload_and_feature" />
+      <item itemvalue="Python.hilberfilter" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.control" />
+        <item itemvalue="Python.hilberfilter" />
+        <item itemvalue="Python.reload_and_feature" />
+        <item itemvalue="Python.preprocess_test" />
         <item itemvalue="Python.librosa_silence_remove (1)" />
-        <item itemvalue="Python.librosa_silence_remove" />
-        <item itemvalue="Python.pitchtracking (1)" />
-        <item itemvalue="Python.pitchtracking" />
-        <item itemvalue="Python.testfrft" />
       </list>
     </recent_temporary>
   </component>
@@ -416,6 +380,12 @@
       <workItem from="1554554854311" duration="3774000" />
       <workItem from="1554616641567" duration="6737000" />
       <workItem from="1554688637317" duration="3573000" />
+      <workItem from="1554692984533" duration="4623000" />
+      <workItem from="1554881960813" duration="6584000" />
+      <workItem from="1554892084267" duration="6810000" />
+      <workItem from="1554904592198" duration="24600000" />
+      <workItem from="1554998567312" duration="11036000" />
+      <workItem from="1555066018642" duration="1186000" />
     </task>
     <servers />
   </component>
@@ -428,7 +398,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237689000" />
+    <option name="totallyTimeSpent" value="292528000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -440,52 +410,52 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49435028" visible="true" weight="0.16085792" />
-      <window_info id="Structure" order="1" sideWeight="0.50564975" side_tool="true" weight="0.2699468" />
-      <window_info id="Favorites" order="2" sideWeight="0.5020492" side_tool="true" weight="0.123324394" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49401197" visible="true" weight="0.1735925" />
+      <window_info id="Structure" order="1" sideWeight="0.505988" side_tool="true" weight="0.13646056" />
+      <window_info id="Favorites" order="2" sideWeight="0.505988" side_tool="true" weight="0.13646056" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30167598" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39696312" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27478755" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39660057" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32960895" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32960895" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3282123" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32719547" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.33569404" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.3297587" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.42761394" />
+      <window_info active="true" anchor="right" id="SciView" order="4" visible="true" weight="0.32707775" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49435028" visible="true" weight="0.11863271" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49435028" visible="true" weight="0.13326226" />
       <window_info id="Structure" order="1" sideWeight="0.50564975" side_tool="true" weight="0.2699468" />
       <window_info id="Favorites" order="2" sideWeight="0.5020492" side_tool="true" weight="0.123324394" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3114525" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3980447" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2407809" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39587852" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32960895" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286334" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32960895" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3275488" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3362256" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.3297587" />
-      <window_info active="true" anchor="right" id="SciView" order="4" visible="true" weight="0.40616623" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.42750534" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +484,29 @@
           <line>4</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/preprocess_filter.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/visualization.py</url>
+          <line>227</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reload_and_classify.py</url>
+          <line>137</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -523,126 +515,13 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Anaconda3/Lib/site-packages/sklearn/externals/joblib/externals/cloudpickle/cloudpickle.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/scipy/stats/stats.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/sklearn/base.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/sklearn/metrics/classification.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/matplotlib/pyplot.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/sklearn/neighbors/classification.py" />
-    <entry file="file://$PROJECT_DIR$/test_code/colorful_point.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#104#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/matplotlib/figure.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/pydub/utils.py" />
-    <entry file="file://$PROJECT_DIR$/test4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-330">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-          <folding>
-            <element signature="e#97#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-882">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-943">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#95#113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="45" column="36" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
-          <folding>
-            <element signature="e#94#112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/base.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/genericpath.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/core/spectrum.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scipy/signal/spectral.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/util/utils.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/preprocessing/data.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/matplotlib/figure.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/filters.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/util/files.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/__init__.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/feature/spectral.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioFeatureExtraction.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/matplotlib/pyplot.py" />
     <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/display.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/numpy/lib/function_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="1471" column="4" selection-start-line="1471" selection-start-column="4" selection-end-line="1471" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_code/harmonic_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <element signature="e#103#125#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/numpy/lib/function_base.py" />
     <entry file="file://$PROJECT_DIR$/test_code/frft.py" />
-    <entry file="file://D:/Anaconda3/Lib/site-packages/numpy/fft/helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/frft/frft.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reload_and_classify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioFeatureExtraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21161">
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/pyAudioAnalysis/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/numpy/fft/helper.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/frft/frft.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioFeatureExtraction.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/pyAudioAnalysis/__init__.py" />
     <entry file="file://$PROJECT_DIR$/test_code/confusion_matrix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -653,13 +532,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/effects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11178">
-          <caret line="492" column="4" selection-start-line="492" selection-start-column="4" selection-end-line="492" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/effects.py" />
     <entry file="file://$PROJECT_DIR$/test_code/librosa_silence_remove.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -670,115 +543,318 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/core/pitch.py">
+    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/core/pitch.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/filters.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/feature/spectral.py" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/core/spectrum.py" />
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/core/spectrum.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="171" column="82" lean-forward="true" selection-start-line="171" selection-start-column="11" selection-end-line="171" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_code/pitchtracking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="e#103#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="e#104#135#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="1553" column="36" lean-forward="true" selection-start-line="1553" selection-start-column="36" selection-end-line="1553" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_code/testfrft.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="-11">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding>
             <element signature="e#98#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/filters.py">
+    <entry file="file://$PROJECT_DIR$/test4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="252" column="50" lean-forward="true" selection-start-line="252" selection-start-column="50" selection-end-line="252" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="122" column="35" lean-forward="true" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+        <state relative-caret-position="266">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
           <folding>
-            <element signature="e#103#135#0" expanded="true" />
+            <element signature="e#97#115#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reload_and_feature.py">
+    <entry file="file://$PROJECT_DIR$/test3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
+        <state relative-caret-position="53">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/feature/spectral.py">
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/matplotlib/figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
-          <caret line="1529" column="22" lean-forward="true" selection-start-line="1529" selection-start-column="22" selection-end-line="1529" selection-end-column="22" />
+        <state relative-caret-position="48951">
+          <caret line="2365" selection-start-line="2365" selection-end-line="2365" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pydub/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/decomposition/pca.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scipy/signal/spectral.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="1022" lean-forward="true" selection-start-line="1022" selection-end-line="1022" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="581" selection-start-line="581" selection-end-line="581" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/filters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="280" column="32" selection-start-line="280" selection-start-column="32" selection-end-line="280" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="3373" column="4" selection-start-line="3373" selection-start-column="4" selection-end-line="3373" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/feature/spectral.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="1535" selection-start-line="1535" selection-end-line="1535" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scipy/signal/filter_design.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scipy/signal/signaltools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="3191" column="4" selection-start-line="3191" selection-start-column="4" selection-end-line="3191" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_code/pitchtracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding>
-            <element signature="e#81#99#0" expanded="true" />
+            <element signature="e#103#121#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/site-packages/librosa/core/spectrum.py">
+    <entry file="file://$PROJECT_DIR$/test_code/harmonic_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-388">
-          <caret line="1515" column="4" selection-start-line="1515" selection-start-column="4" selection-end-line="1515" selection-end-column="4" />
+        <state relative-caret-position="168">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="e#103#125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_code/hilberfilter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-875">
+          <caret line="12" column="59" lean-forward="true" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+          <folding>
+            <element signature="e#104#133#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/preprocess_filter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69" />
+        <state relative-caret-position="260">
+          <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/load_and_preprocess.py">
+    <entry file="file://$PROJECT_DIR$/test2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1311">
-          <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+        <state relative-caret-position="-42">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
-            <element signature="e#110#128#0" expanded="true" />
+            <element signature="e#95#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+          <folding>
+            <element signature="e#94#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/librosa/util/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioFeatureExtraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600" />
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioSegmentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5355">
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioBasicIO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/pyAudioAnalysis/audioAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="215" column="4" selection-start-line="215" selection-start-column="4" selection-end-line="215" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocess_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#24#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="1688" selection-start-line="1688" selection-end-line="1688" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3612">
+          <caret line="172" column="23" selection-start-line="172" selection-start-column="23" selection-end-line="172" selection-end-column="23" />
+          <folding>
+            <element signature="e#104#135#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/feature_extraction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="26" selection-start-line="26" selection-end-line="28" />
+        <state relative-caret-position="336">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
-            <element signature="e#109#138#0" expanded="true" />
+            <element signature="e#108#137#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/discriminant_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="249" column="8" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/load_and_preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#110#128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="227" selection-start-line="227" selection-end-line="227" />
+          <folding>
+            <element signature="e#103#135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="309" selection-start-line="309" selection-end-line="309" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reload_and_feature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+          <folding>
+            <element signature="e#110#128#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/control.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="301">
+          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
           <folding>
             <element signature="e#98#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reload_and_classify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+          <folding>
+            <element signature="e#110#128#0" expanded="true" />
           </folding>
         </state>
       </provider>
