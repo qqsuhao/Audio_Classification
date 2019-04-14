@@ -60,6 +60,7 @@ def hilbert_filter(x, fs, order=201, pic=None):
         ax2.grid()
         ax2.axis('tight')
         plt.savefig(pic + 'hilbert_filter.jpg')
+        # plt.show()
         plt.clf()
         plt.close()
     return envolope

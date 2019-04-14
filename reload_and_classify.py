@@ -18,7 +18,8 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import matplotlib.pyplot as plt
 
 
-def reload_and_classify(order,
+def reload_and_classify(feature_type,
+                        order,
                         PCAornot,
                         saveprojectpath,
                         savedata,
@@ -28,6 +29,7 @@ def reload_and_classify(order,
                         savefeature,
                         path,
                         downsample_rate,
+                        frame_time,
                         frame_length,
                         frame_overlap,
                         test_rate):
@@ -42,6 +44,26 @@ def reload_and_classify(order,
     即使是属于同一类标签的集合，其元素也不能混合，否则会影响集合所属标签的判断。
     5. 专门创建以文件夹用来存放测试数据，以便之后读取数据更加方便。
 '''
+    feature_use = []
+    feature_length = [frame_length // 2 + 1,        # 0.stft
+                      1,                              # 1.zero_crossing_rate
+                      1,                              # 2.energy
+                      1,                              # 3.entropy_of_energy
+                      1,                              # 4.spectral_centroid_spread
+                      1,                              # 5.spectral_entropy
+                      1,                              # 6.spectral_flux
+                      1,                              # 7.spectral_rolloff
+                      1,                              # 8.bandwidth
+                      13,                              # 9.mfccs
+                      1,                              # 10.rms
+                      frame_length // 2,           # 11.stfrft
+                      13]                           # 12.frft_mfcc
+                                                    # 13.Harmonics
+                                                    # 记录每种特征的向量长度
+    for i in feature_type:
+        feature_use += [sum(feature_length[0:i])+j for j in list(range(0, feature_length[i]))]  # 这句代码写的真好，佩服自己，哈哈哈哈
+
+
     sample_num = []
     labelname = os.listdir(savefeature)
     for i in range(len(labelname)):
@@ -74,9 +96,11 @@ def reload_and_classify(order,
             with open(traindatapath, 'a+', newline='', encoding='utf-8') as csvfile:
                 csv_write = csv.writer(csvfile)
                 csv_write.writerows(train)
+            print(i,j)
     train = pd.read_csv(traindatapath, encoding='utf-8', header=None)
     train = train.values.astype('float32')
     train_X = train[:, 0:train.shape[1] - 2]
+    train_X = train_X[:, feature_use]
     train_Y = train[:, -2]
 
 
@@ -100,11 +124,11 @@ def reload_and_classify(order,
         # visual.pca_2plot(x1=x1, x2=x2, dim=3, svd_solver='auto', pic=savepic+'\\'+str(order)+'_label_'+str(i))
 
 
-    lda = LinearDiscriminantAnalysis(n_components=3)
-    lda.fit(train_X, train_Y)
-    X_new = lda.fit_transform(train_X, train_Y)
-    plt.scatter(np.arange(0, len(X_new)), X_new, marker='o',c=train_Y)
-    plt.show()
+    # lda = LinearDiscriminantAnalysis(n_components=3)
+    # lda.fit(train_X, train_Y)
+    # X_new = lda.fit_transform(train_X, train_Y)
+    # plt.scatter(np.arange(0, len(X_new)), X_new, marker='o',c=train_Y)
+    # plt.show()
 
 
     # 训练KNN分类器
@@ -115,8 +139,8 @@ def reload_and_classify(order,
         metric='euclidean',
         weights='distance')
     # 使用我自己的KNN时，输入的特征矩阵列数代表样本数.使用库函数的KNN时正好相反。
-    # neigh.fit(train_X, train_Y)
-    neigh.fit(X_new, train_Y)
+    neigh.fit(train_X, train_Y)
+    # neigh.fit(X_new, train_Y)
 
 
     # 读取测试数据
@@ -130,12 +154,13 @@ def reload_and_classify(order,
             test = pd.read_csv(csv_path, encoding='utf-8', header=None)
             test = test.values.astype('float32')
             test_X = test[:, 0:(test.shape[1] - 2)]
+            test_X = test_X[:, feature_use]
             test_Y = test[0, -2]
 
-            # predictions = neigh.predict(test_X)
+            predictions = neigh.predict(test_X)
 
-            x_new = lda.transform(test_X)
-            predictions = neigh.predict(x_new)
+            # x_new = lda.transform(test_X)
+            # predictions = neigh.predict(x_new)
             # predictions = lda.predict(test_X)
 
             prediction, label_count = stats.mode(predictions)

@@ -57,12 +57,12 @@ def stft(x, pic=None, **params):
     return f, t, zxx
 
 
-def fft_singleside(x, fs, pic=None):
+def fft_singleside(x, fs, n=None, pic=None):
     '''
     :param: x:输入信号
     :return: 偶数点fft的单边谱。
     '''
-    X = fftpack.fft(x)
+    X = fftpack.fft(x=x, n=n)
     X = X[0: len(X)//2 + 1]
     if pic is not None:
         visual.picplot(

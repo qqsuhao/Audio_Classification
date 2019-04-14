@@ -8,6 +8,10 @@ import librosa
 import os
 import preprocessing
 import csv
+import matplotlib.pyplot as plt
+import amfm_decompy.pYAAPT as pYAAPT
+import amfm_decompy.basic_tools as basic
+
 
 '''
 对于不同的数据集，进行测试时，只需要更改saveprojectpath 和 path
@@ -24,6 +28,7 @@ def load_and_preprocess(amphasis,
                         savefeature,
                         path,
                         downsample_rate,
+                        frame_time,
                         frame_length,
                         frame_overlap,
                         test_rate):
@@ -70,13 +75,14 @@ def load_and_preprocess(amphasis,
             #     option='hilbert',
             #     # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
             #     pic=None)
-            silence_remove = preprocessing.silence_remove(
-                x=downsample,
-                limit=np.max(downsample) / 20 * 2,
-                fs=downsample_rate,
-                option='HF',
-                # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
-                pic=None)
+            # silence_remove = preprocessing.silence_remove(
+            #     x=downsample,
+            #     limit=np.max(downsample) / 20 * 2,
+            #     fs=downsample_rate,
+            #     option='HF',
+                # pic=savepic + '\\' + 'silence_remove_hilbert_filter_' + str(j)+'_'+str(i))
+                # pic=None)
+            silence_remove = downsample
             # silence_remove = preprocessing.silence_remove(
             #     downsample,
             #     limit=0.02,

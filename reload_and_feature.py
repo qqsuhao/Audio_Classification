@@ -10,6 +10,10 @@ import feature_extraction as fe
 import os
 import preprocessing
 from sklearn.preprocessing import minmax_scale
+import matplotlib.pyplot as plt
+import amfm_decompy.pYAAPT as pYAAPT
+import amfm_decompy.basic_tools as basic
+import visualization as visual
 
 
 def reload_and_feature(picall,
@@ -22,6 +26,7 @@ def reload_and_feature(picall,
                        savefeature,
                        path,
                        downsample_rate,
+                       frame_time,
                        frame_length,
                        frame_overlap,
                        test_rate):
@@ -52,8 +57,10 @@ def reload_and_feature(picall,
     for row in csv_reader:            # row中的元素是字符类型
         time_series = np.array(row[2:]).astype('float32')
         #######################################################################
+
+        #######################################################################
         frames = preprocessing.frame(time_series, frame_length, frame_overlap)
-        f, t, stft = fe.stft(time_series, pic=savepic + '\\' + row[0] + '_' + row[1], fs=downsample_rate, nperseg=frame_length,
+        f, t, stft = fe.stft(time_series, pic=None, fs=downsample_rate, nperseg=frame_length,
                              noverlap=frame_overlap, nfft=frame_length, padded=True, boundary=None)
         if stft.shape[1] != frames.shape[1]:                   #防止stft的时间个数和帧的个数不一样
             dim = min(stft.shape[1], frames.shape[1])
@@ -98,7 +105,8 @@ def reload_and_feature(picall,
             elif i == 9:
                 feature9 = fe.mfccs(X=stft,
                                     fs=downsample_rate,
-                                    nfft=2*(stft.shape[0]-1),
+                                    # nfft=2*(stft.shape[0]-1),
+                                    nfft=8193,
                                     n_mels=512,
                                     n_mfcc=13,
                                     pic=pic)
