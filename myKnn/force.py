@@ -23,7 +23,7 @@
 #         return y[:, 1]
 
 import numpy as np
-import dist_formular as metric
+from myKnn import dist_formular as metric
 import copy
 
 

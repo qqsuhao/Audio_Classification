@@ -1,10 +1,15 @@
 # -*- coding:utf8 -*-
+# @TIME     : 2019/4/27 12:15
+# @Author   : SuHao
+# @File     : load_and_feature_2.py
+
+# -*- coding:utf8 -*-
 # @TIME     : 2019/3/30 21:58
 # @Author   : SuHao
 # @File     : reload_and_feature.py
 
 '''
-frame 和 stft 对齐的情况，完全正确的代码
+frame 和 stft 不对齐，在求每个特征的时候就把平均值和方差求出来
 '''
 import numpy as np
 import csv
@@ -71,13 +76,14 @@ def reload_and_feature(picall,
         #######################################################################
         frames = preprocessing.frame(time_series, frame_length, frame_overlap)                      # 分帧
         f, t, stft = fe.stft(time_series, pic=None, fs=downsample_rate, nperseg=frame_length,
-                             noverlap=frame_length-frame_overlap, nfft=8192, boundary=None, padded=False)
+                             noverlap=frame_overlap, nfft=8192, boundary=None, padded=False)
         # if stft.shape[1] != frames.shape[1]:                                 # 防止stft的时间个数和帧的个数不一样
         #     dim = min(stft.shape[1], frames.shape[1])
         #     stft = stft[:, 0:dim]
         #     frames = frames[:, 0:dim]
         # Mel = lib.feature.melspectrogram(S=np.abs(stft), sr=downsample_rate, n_fft=2*(stft.shape[0]-1), n_mels=512)
         feature_list = []                       # 用于存放各种类型的特征，每个帧对应一个特征向量，其元素分别是每种类型的特征
+        feature_list_var = []
         if picall:                              # 用于绘图控制
             pic = savepic + '\\' + row[0] + '_' + row[1]
         else:
@@ -86,32 +92,62 @@ def reload_and_feature(picall,
         for i in feature_type:
             if i == 0:
                 feature0 = np.abs(stft)
-                feature_list.append(feature0)
+                mean = np.mean(feature0, axis=1).reshape(feature0.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature0, axis=1).reshape(feature0.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 1:
                 feature1 = fe.zero_crossing_rate(frames, pic=pic)
-                feature_list.append(feature1)
+                mean = np.mean(feature1, axis=1).reshape(feature1.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature1, axis=1).reshape(feature1.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 2:
                 feature2 = fe.energy(frames, pic=pic)
-                feature_list.append(feature2)
+                mean = np.mean(feature2, axis=1).reshape(feature2.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature2, axis=1).reshape(feature2.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 3:
                 feature3 = fe.entropy_of_energy(frames, pic=pic)
-                feature_list.append(feature3)
+                mean = np.mean(feature3, axis=1).reshape(feature3.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature3, axis=1).reshape(feature3.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 4:
                 feature4, feature41 = fe.spectral_centroid_spread(stft, downsample_rate, pic=pic)
-                feature_list.append(feature4)
-                feature_list.append(feature41)
+                mean = np.mean(feature4, axis=1).reshape(feature4.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature4, axis=1).reshape(feature4.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
+                mean = np.mean(feature41, axis=1).reshape(feature41.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature41, axis=1).reshape(feature41.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 5:
                 feature5 = fe.spectral_entropy(stft, pic=pic)
-                feature_list.append(feature5)
+                mean = np.mean(feature5, axis=1).reshape(feature5.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature5, axis=1).reshape(feature5.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 6:
                 feature6 = fe.spectral_flux(stft, pic=pic)
-                feature_list.append(feature6)
+                mean = np.mean(feature6, axis=1).reshape(feature6.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature6, axis=1).reshape(feature6.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 7:
                 feature7 = fe.spectral_rolloff(stft, 0.85, downsample_rate, pic=pic)
-                feature_list.append(feature7)
+                mean = np.mean(feature7, axis=1).reshape(feature7.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature7, axis=1).reshape(feature7.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 8:
                 feature8 = fe.bandwidth(stft, f, pic=pic)
-                feature_list.append(feature8)
+                mean = np.mean(feature8, axis=1).reshape(feature8.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature8, axis=1).reshape(feature8.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 9:
                 feature9 = fe.mfccs(X=stft,fs=downsample_rate,
                                     # nfft=2*(stft.shape[0]-1),
@@ -119,29 +155,53 @@ def reload_and_feature(picall,
                                     n_mels=nmel,
                                     n_mfcc=nmfcc,
                                     pic=pic)
-                feature_list.append(feature9)
+                mean = np.mean(feature9, axis=1).reshape(feature9.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature9, axis=1).reshape(feature9.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 10:
                 feature10 = fe.rms(stft, pic=pic)
-                feature_list.append(feature10)
+                mean = np.mean(feature10, axis=1).reshape(feature10.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature10, axis=1).reshape(feature10.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 11:
                 feature11 = fe.stfrft(frames, p=order_frft[int(row[0])], pic=pic)
-                feature_list.append(feature11)
+                mean = np.mean(feature11, axis=1).reshape(feature11.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature11, axis=1).reshape(feature11.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 12:
                 tmp = fe.stfrft(frames, p=order_frft[int(row[0])])
                 feature12 = fe.frft_MFCC(S=tmp, fs=downsample_rate, n_mfcc=nmfcc, n_mels=nmel, pic=pic)
-                feature_list.append(feature12)
+                mean = np.mean(feature12, axis=1).reshape(feature12.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature12, axis=1).reshape(feature12.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 13:
                 feature13, feature13_ = fe.fundalmental_freq(frames=frames, fs=downsample_rate, pic=pic)
-                feature_list.append(feature13)
+                mean = np.mean(feature13, axis=1).reshape(feature13.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature13, axis=1).reshape(feature13.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 14:
                 feature14 = fe.chroma_stft(S=stft, n_chroma=12, A440=440.0, ctroct=5.0, octwidth=2, base_c=True, norm=2)
-                feature_list.append(feature14)
+                mean = np.mean(feature14, axis=1).reshape(feature14.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature14, axis=1).reshape(feature14.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 15:
                 feature15 = fe.log_attack_time(x=time_series, lower_ratio=0.02, upper_ratio=0.99, fs=downsample_rate, n=frames.shape[1])
-                feature_list.append(feature15)
+                mean = np.mean(feature15, axis=1).reshape(feature15.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature15, axis=1).reshape(feature15.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 16:
                 feature16 = fe.temoporal_centroid(S=stft, hop_length=frame_overlap, fs=downsample_rate)
-                feature_list.append(feature16)
+                mean = np.mean(feature16, axis=1).reshape(feature16.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature16, axis=1).reshape(feature16.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 17:
                 # harm_freq, harm_mag = fe.harmonics(nfft=8192, nht=0.15, f=f, S=stft, fs=downsample_rate, fmin=50, fmax=500, threshold=0.2)
                 # hsc = fe.harmonic_spectral_centroid(harm_freq, harm_mag)
@@ -156,32 +216,45 @@ def reload_and_feature(picall,
                 hss = timbral.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
                 hsv = timbral.harmonic_spectral_variation(harm_mag)
                 feature17 = np.concatenate([hsc, hsd, hss, hsv], axis=0)
-                feature_list.append(feature17)
+                mean = np.mean(feature17, axis=1).reshape(feature17.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature17, axis=1).reshape(feature17.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 18:
                 feature18 = fe.pitches_mag_CDSV(f=f, S=stft, fs=downsample_rate, fmin=50, fmax=downsample_rate/2, threshold=0.2)
-                feature_list.append(feature18)
+                mean = np.mean(feature18, axis=1).reshape(feature18.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature18, axis=1).reshape(feature18.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 19:
                 feature19 = fe.delta_features(feature9, order=1)
-                feature_list.append(feature19)
+                mean = np.mean(feature19, axis=1).reshape(feature19.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature19, axis=1).reshape(feature19.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
             elif i == 20:
                 feature20 = fe.delta_features(feature9, order=2)
-                feature_list.append(feature20)
+                mean = np.mean(feature20, axis=1).reshape(feature20.shape[0], 1)  # 原来的特征向量是列向量，这里转成行向量
+                var = np.var(feature20, axis=1).reshape(feature20.shape[0], 1)
+                feature_list.append(mean)
+                feature_list_var.append(var)
 
         features = np.concatenate([j for j in feature_list], axis=0)    # 我很欣赏这一句代码，将各种特征拼在一起
+        features_var = np.concatenate([j for j in feature_list_var], axis=0)
         long = list(range(features.shape[1]))                           # 删除含有nan的帧
-        for t in long[::-1]:
-            if np.isnan(features[:, t]).any():
-                features = np.delete(features, t, 1)
+        # for t in long[::-1]:
+        #     if np.isnan(features[:, t]).any():
+        #         features = np.delete(features, t, 1)
         if average:                  # 使用统计量作为特征
-            mean = np.mean(features, axis=1).reshape(1, features.shape[0])  # 原来的特征向量是列向量，这里转成行向量
-            var = np.var(features, axis=1).reshape(1, features.shape[0])
+            # mean = np.mean(features, axis=1).reshape(1, features.shape[0])  # 原来的特征向量是列向量，这里转成行向量
+            # var = np.var(features, axis=1).reshape(1, features.shape[0])
             # std = np.std(features, axis=1).reshape(1, features.shape[0])
             # ske = np.zeros((1, features.shape[0]))
             # kur = np.zeros((1, features.shape[0]))
             # for n in range(features.shape[0]):
             #     ske[0, i] = sts.skewness(features[i, :])
             #     kur[0, i] = sts.kurtosis(features[i, :])
-            features = np.concatenate([mean, var, np.array([int(row[0]), int(row[1])]).reshape(1, 2)], axis=1) # 使用统计平均代替每个帧的特征
+            features = np.concatenate([features.T, features_var.T, np.array([int(row[0]), int(row[1])]).reshape(1, 2)], axis=1) # 使用统计平均代替每个帧的特征
             feature_set.append(features)
         else:
             scale = StandardScaler().fit(features)

@@ -3,8 +3,6 @@
 # @Author   : SuHao
 # @File     : Su_KNN.py
 
-import numpy as np
-
 # -*- coding: utf-8 -*-
 """
 Created on Wed Mar 13 21:58:57 2019
@@ -13,9 +11,7 @@ Created on Wed Mar 13 21:58:57 2019
 """
 
 import numpy as np
-import force
-import Su_kdtree as kd
-import set_weight as weight
+from myKnn import Su_kdtree as kd, force, set_weight as weight
 
 
 class classifier:

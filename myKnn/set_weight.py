@@ -40,6 +40,11 @@ def uniform_weight(neighbor, label_num):
 
 
 def gaussian_weight(neighbor, label_num):
+    '''
+    :param neighbor: 两列，第一列存放距离，第二列存放标签
+    :param label_num: 总的标签数量
+    :return: 预测结果和预测置信度
+    '''
     label = neighbor[:, 1].astype(np.int8)
     prob = np.zeros((label_num, ))
     gaussian_dist = gaussian(neighbor[:, 0])

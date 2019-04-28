@@ -1,10 +1,9 @@
 # -*- coding:utf8 -*-
-# @TIME     : 2019/3/30 21:58
+# @TIME     : 2019/4/27 12:12
 # @Author   : SuHao
-# @File     : reload_and_feature.py
-
+# @File     : load_and_frature_1.py
 '''
-frame 和 stft 对齐的情况，完全正确的代码
+frames 和 stft的列数不对齐的情况
 '''
 import numpy as np
 import csv
@@ -71,11 +70,11 @@ def reload_and_feature(picall,
         #######################################################################
         frames = preprocessing.frame(time_series, frame_length, frame_overlap)                      # 分帧
         f, t, stft = fe.stft(time_series, pic=None, fs=downsample_rate, nperseg=frame_length,
-                             noverlap=frame_length-frame_overlap, nfft=8192, boundary=None, padded=False)
-        # if stft.shape[1] != frames.shape[1]:                                 # 防止stft的时间个数和帧的个数不一样
-        #     dim = min(stft.shape[1], frames.shape[1])
-        #     stft = stft[:, 0:dim]
-        #     frames = frames[:, 0:dim]
+                             noverlap=frame_overlap, nfft=8192, boundary=None, padded=False)
+        if stft.shape[1] != frames.shape[1]:                                 # 防止stft的时间个数和帧的个数不一样
+            dim = min(stft.shape[1], frames.shape[1])
+            stft = stft[:, 0:dim]
+            frames = frames[:, 0:dim]
         # Mel = lib.feature.melspectrogram(S=np.abs(stft), sr=downsample_rate, n_fft=2*(stft.shape[0]-1), n_mels=512)
         feature_list = []                       # 用于存放各种类型的特征，每个帧对应一个特征向量，其元素分别是每种类型的特征
         if picall:                              # 用于绘图控制
@@ -166,6 +165,14 @@ def reload_and_feature(picall,
             elif i == 20:
                 feature20 = fe.delta_features(feature9, order=2)
                 feature_list.append(feature20)
+            elif i == 21:
+                harm_freq, harm_mag = timbral.harmonics(frames=frames, fs=downsample_rate, S=stft, f=f, nfft=8192, fmin=50, fmax=500,  nht=0.15)
+                hsc = timbral.harmonic_spectral_centroid(harm_freq, harm_mag)
+                hsd = timbral.harmonic_spectral_deviation(harm_mag)
+                hss = timbral.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
+                hsv = timbral.harmonic_spectral_variation(harm_mag)
+                feature21 = np.concatenate([hsc, hsd, hss, hsv], axis=0)
+                feature_list.append(feature21)
 
         features = np.concatenate([j for j in feature_list], axis=0)    # 我很欣赏这一句代码，将各种特征拼在一起
         long = list(range(features.shape[1]))                           # 删除含有nan的帧

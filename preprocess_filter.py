@@ -8,20 +8,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+# 低通滤波器已检查完毕
 def lp_filter(x, N, f, fs, plot=False):
     '''
     :param x: 输入信号
-    :param N: 巴特沃斯滤波器系数
-    :param f: 截止频率
+    :param N: 巴特沃斯滤波器阶数，不能太大
+    :param f: 截止频率,不是归一化频率，不过要指定采样率
     :param fs: 采样频率
     :param plot: bool。选择是否绘图且保存
     :return:
     '''
-    sos = signal.butter(N, f, 'lowpass', fs=fs, output='sos')     #采样率为1000hz，带宽为15hz，输出sos
-    filtered = signal.sosfilt(sos, x)             #将信号和通过滤波器作用，得到滤波以后的结果。在这里sos有点像冲击响应，这个函数有点像卷积的作用。
-    b, a = signal.butter(N, f, 'lowpass', fs=fs, output='ba')
-    w, h = signal.freqz(b, a)
+    b, a = signal.butter(N=N, Wn=f, btype='lowpass', output='ba', fs=fs)
+    filtered = signal.filtfilt(b, a, x)
     if plot:
+        w, h = signal.freqz(b, a)                               # 数字滤波器的频率响应
         plt.figure()
         plt.plot(w / 2 / np.pi * fs, 20 * np.log10(abs(h)))  # 由于频域周期延拓和对称性，只需要0-pi的区间，对应频率0-fs/2
         plt.title('Butterworth filter frequency response')
@@ -30,21 +30,26 @@ def lp_filter(x, N, f, fs, plot=False):
         plt.margins(0, 0.1)
         plt.grid(which='both', axis='both')
         plt.savefig(str(plot) + '幅频响应.jpg')
+        # plt.show()
         plt.clf()
         plt.close()
     return filtered
 
 
-def hilbert_filter(x, fs, order=201, pic=None):
-    co = signal.firwin(numtaps=201,
-                       cutoff=[0.001*fs/2/np.pi, (np.pi-0.001)*fs/2/np.pi],
-                       width=None,
-                       window='hann',
-                       pass_zero=False,
-                       scale=True,
-                       nyq=None,
-                       fs=fs)
-    out = signal.filtfilt(b=co, a=1, x=x, padlen=int((order-1)/2))
+# 已检查
+def hilbert_filter(x, fs, order=81, pic=None):
+    '''
+    :param x: 输入信号
+    :param fs: 信号采样频率
+    :param order: 希尔伯特滤波器阶数
+    :param pic: 是否绘图，bool
+    :return:
+    '''
+    co = [2*np.sin(np.pi*n/2)**2/np.pi/n for n in range(1, order+1)]
+    co1 = [2*np.sin(np.pi*n/2)**2/np.pi/n for n in range(-order, 0)]
+    co = co1+[0]+ co
+    # out = signal.filtfilt(b=co, a=1, x=x, padlen=int((order-1)/2))
+    out = signal.convolve(x, co, mode='same', method='direct')
     envolope = np.sqrt(out**2 + x**2)
     if pic is not None:
         w, h = signal.freqz(b=co, a=1, worN=2048, whole=False, plot=None, fs=2*np.pi)

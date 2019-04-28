@@ -10,7 +10,6 @@ import preprocessing
 import csv
 import matplotlib.pyplot as plt
 import amfm_decompy.pYAAPT as pYAAPT
-import amfm_decompy.basic_tools as basic
 
 
 '''
@@ -20,6 +19,9 @@ import amfm_decompy.basic_tools as basic
 
 
 def load_and_preprocess(amphasis,
+                        down,
+                        clip,
+                        factor,
                         saveprojectpath,
                         savedata,
                         savepic,
@@ -36,69 +38,79 @@ def load_and_preprocess(amphasis,
         os.mkdir('..\\仿真结果')
     if not os.path.exists(saveprojectpath):
         os.mkdir(saveprojectpath)
-    if not os.path.exists(savedata):
+    if not os.path.exists(savedata):        # 保存数据
         os.mkdir(savedata)
-    if not os.path.exists(savepic):
+    if not os.path.exists(savepic):         # 创建保存图片的文件夹
         os.mkdir(savepic)
-    if not os.path.exists(savetestdata):
+    if not os.path.exists(savetestdata):    # 创建保存测试数据的文件
         os.mkdir(savetestdata)
 
     # 写入数据
-    with open(savepreprocess, 'w', encoding='utf-8') as csvfile:
+    with open(savepreprocess, 'w', encoding='utf-8') as csvfile:    # 先创建csv文件，什么都不写入，之后再追加
         writer = csv.writer(csvfile)
     # 读取音频文件目录
-    labelname = os.listdir(path)   # 获取该路径下的子文件名
+    labelname = os.listdir(path)                                    # 获取该路径下的子文件名，也是标签的名字
     for j in range(len(labelname)):
-        subpath = path + '\\' + labelname[j]
-        subfilename = os.listdir(subpath)  # 查看音频文件目录
+        subpath = path + '\\' + labelname[j]                        # 数据集的子文件路径
+        subfilename = os.listdir(subpath)                           # 查看音频文件目录
         for i in range(len(subfilename)):
             audio_data, sample_rate = librosa.load(
-                subpath + '\\' + subfilename[i], sr=None, mono=True, res_type='kaiser_best')  # 读取文件
-            ###################################################################
+                subpath + '\\' + subfilename[i], sr=None, mono=True, res_type='kaiser_best')  # 读取音频文件
+            audio_data = librosa.util.normalize(audio_data, norm=np.inf, axis=0, threshold=None, fill=None)
+##########################################################################################################################
             if amphasis:
                 pre_amphasis = preprocessing.pre_emphasis(audio_data, 0.97,
                                                           pic=None)
                                                           # pic=savepic + '\\' + 'pre_amphasis_'+str(j)+'_'+str(i))
             else:
                 pre_amphasis = audio_data
-            # avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
-            #                                             N=20,
-            #                                             f=11025,
-            #                                             fs=sample_rate,
-            #                                             plot=False)
-            # downsample = preprocessing.downsample(
-            #     avoid_overlap, sample_rate, downsample_rate)
-            downsample = pre_amphasis
-            # silence_remove = preprocessing.silence_remove(
-            #     downsample,
-            #     limit=np.max(downsample) / 20 * 3,
-            #     option='hilbert',
-            #     # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
-            #     pic=None)
-            # silence_remove = preprocessing.silence_remove(
-            #     x=downsample,
-            #     limit=np.max(downsample) / 20 * 2,
-            #     fs=downsample_rate,
-            #     option='HF',
-                # pic=savepic + '\\' + 'silence_remove_hilbert_filter_' + str(j)+'_'+str(i))
-                # pic=None)
-            silence_remove = downsample
-            # silence_remove = preprocessing.silence_remove(
-            #     downsample,
-            #     limit=0.02,
-            #     option=filter,
-            #     pic=savepic + '\\' + 'silence_remove_filter_' + str(j)+'_'+str(i),
-            #     N=10,
-            #     f=600,
-            #     fs=downsample_rate,
-            #     plot=None)
 
-            ###################################################################
+            if down:
+                avoid_overlap = preprocessing.avoid_overlap(pre_amphasis,
+                                                            N=20,
+                                                            f=downsample_rate / 2,
+                                                            fs=sample_rate,
+                                                            plot=False)
+                downsample = preprocessing.downsample(
+                    avoid_overlap, sample_rate, downsample_rate)
+            else:
+                downsample = pre_amphasis
+
+            if clip == 'hilbert':
+                silence_remove = preprocessing.silence_remove(
+                    x=downsample,
+                    limit=np.max(downsample) * factor,
+                    fs=downsample_rate,
+                    option='hilbert',
+                    # pic=savepic + '\\' + 'silence_remove_hilbert_' + str(j)+'_'+str(i))
+                    pic=None)
+            elif clip == 'HF':
+                silence_remove = preprocessing.silence_remove(
+                    x=downsample,
+                    limit=np.max(downsample) * factor,
+                    fs=downsample_rate,
+                    option='HF',
+                    # pic=savepic + '\\' + 'silence_remove_hilbert_filter_' + str(j)+'_'+str(i))
+                    pic=None)
+            elif clip == 'filter':
+                silence_remove = preprocessing.silence_remove(
+                        x=downsample,
+                        limit=0.02,
+                        option='filter',
+                        pic=savepic + '\\' + 'silence_remove_filter_' + str(j)+'_'+str(i),
+                        N=10,
+                        f=600,
+                        fs=downsample_rate)
+            else:
+                silence_remove = downsample
+
+
+########################################################################################################################
             # j表示标签， i表示同一标签下的音频文件序号
             buffer = [j] + [i] + list(silence_remove)
             with open(savepreprocess, 'a+', newline='', encoding='utf-8') as csvfile:
                 csv_write = csv.writer(csvfile)
-                csv_write.writerow(buffer)
+                csv_write.writerow(buffer)              # 逐行写入数据
 
             print('preprocessing:', j, i)
 

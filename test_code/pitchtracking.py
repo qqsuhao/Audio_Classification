@@ -10,18 +10,17 @@ import matplotlib.pyplot as plt
 
 ex = '..\\..\\cello_and_viola\\cello\\Cello.arco.ff.sulA.A3.stereo.aiff'
 time_series, fs = lib.load(ex, sr=None, mono=True, res_type='kaiser_best')
-frame_length = int(0.3 * fs)
+frame_length = int(0.03 * fs)
 frame_overlap = frame_length // 2
 f, t, stft = signal.stft(
     time_series,
     fs=fs,
     nperseg=frame_length,
     noverlap=frame_overlap,
-    nfft=frame_length,
+    nfft=8192,
     padded=None,
     boundary=None)
-pitch, mag = lib.piptrack(sr=fs, S=np.abs(
-    stft), n_fft=frame_length, hop_length=None, fmin=0, fmax=fs/2, threshold=0.1)
+pitch, mag = lib.piptrack(S=np.abs(stft), sr=fs, fmin=50, fmax=500, threshold=0.2)
 
 for i in range(stft.shape[1]):
     plt.figure()

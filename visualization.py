@@ -68,14 +68,14 @@ def confidece_plot(
     plt.close()
 
 
-def cm_plot(y_true, y_pred, pic=None):
-    def plot_confusion_matrix(cm, title='Confusion Matrix', cmap = plt.cm.binary):
+def cm_plot(y_true, y_pred, labelname, accuracy, pic=None):
+    def plot_confusion_matrix(cm, title='Confusion Matrix', labelname=labelname, accuracy=accuracy, cmap = plt.cm.binary):
         plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
-        plt.title(title)
+        plt.title(title+'\n'+'accuracy: %.2f'%accuracy)
         plt.colorbar()
         xlocations = np.array(range(len(labels)))
-        plt.xticks(xlocations, labels, rotation=90)
-        plt.yticks(xlocations, labels)
+        plt.xticks(xlocations, tuple(labelname), rotation=90)
+        plt.yticks(xlocations, tuple(labelname))
         plt.ylabel('True label')
         plt.xlabel('Predicted label')
     cm = confusion_matrix(y_true, y_pred)
@@ -99,7 +99,7 @@ def cm_plot(y_true, y_pred, pic=None):
     plt.gca().yaxis.set_ticks_position('none')
     plt.grid(True, which='minor', linestyle='-')
     plt.gcf().subplots_adjust(bottom=0.15)
-    plot_confusion_matrix(cm_normalized, title='confusion matrix')
+    plot_confusion_matrix(cm_normalized, title='confusion matrix', labelname=labelname, accuracy=accuracy)
     if pic is not None:
         plt.savefig(str(pic) + '.jpg', bbox_inches='tight')
     plt.clf()
@@ -124,19 +124,28 @@ def picplot(x, y, title, xlabel, ylabel, pic=None):
 
 def picfftandpitch(x,y1,y2,title, xlabel, ylabel, pic=None):
     '''
-    绘制hold on
+    :param x: 频率
+    :param y1: fft幅值
+    :param y2: 基频
+    :param title:
+    :param xlabel:
+    :param ylabel:
+    :param pic:
+    :return:
     '''
     plt.figure()
     plt.plot(x, y1, 'r')
-    plt.axvline(y2, c='b')
+    for i in y2:
+        plt.axvline(i, c='b')
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.tight_layout()
     if pic is not None:
         plt.savefig(str(pic) + '.jpg')
-    plt.clf()
-    plt.close()
+    # plt.show()
+    # plt.clf()
+    # plt.close()
 
 
 
