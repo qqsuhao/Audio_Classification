@@ -29,7 +29,7 @@ hsd = fe.harmonic_spectral_deviation(harm_mag)
 hss = fe.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
 hsv = fe.harmonic_spectral_variation(harm_mag)
 
-a, b
+
 
 
 

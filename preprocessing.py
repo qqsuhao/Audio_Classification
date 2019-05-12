@@ -151,6 +151,7 @@ def silence_remove(x, option, pic, limit, **params):
             ax2.set_ylabel('value')
             plt.tight_layout()
             plt.savefig(str(pic) + '.jpg')
+            # plt.show()
             plt.clf()
             plt.close()
         return y
@@ -174,10 +175,10 @@ def silence_remove(x, option, pic, limit, **params):
             ax3.set_xlabel('Time')
             ax3.set_ylabel('value')
             plt.tight_layout()
-            plt.savefig(str(pic) + '.jpg')
-            # plt.show()
-            plt.clf()
-            plt.close()
+            # plt.savefig(str(pic) + '.jpg')
+            plt.show()
+            # plt.clf()
+            # plt.close()
         return x[np.abs(z) > limit]
 
 

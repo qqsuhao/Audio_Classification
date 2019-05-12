@@ -142,19 +142,20 @@ def reload_and_feature(picall,
                 feature16 = fe.temoporal_centroid(S=stft, hop_length=frame_overlap, fs=downsample_rate)
                 feature_list.append(feature16)
             elif i == 17:
-                # harm_freq, harm_mag = fe.harmonics(nfft=8192, nht=0.15, f=f, S=stft, fs=downsample_rate, fmin=50, fmax=500, threshold=0.2)
-                # hsc = fe.harmonic_spectral_centroid(harm_freq, harm_mag)
-                # hsd = fe.harmonic_spectral_deviation(harm_mag)
-                # hss = fe.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
-                # hsv = fe.harmonic_spectral_variation(harm_mag)
-                # feature17 = np.concatenate([hsc, hsd, hss, hsv], axis=0)
-                # feature_list.append(feature17)
-                harm_freq, harm_mag = timbral.harmonics(frames=frames, fs=downsample_rate, S=stft, f=f, nfft=8192, fmin=50, fmax=500,  nht=0.15)
-                hsc = timbral.harmonic_spectral_centroid(harm_freq, harm_mag)
-                hsd = timbral.harmonic_spectral_deviation(harm_mag)
-                hss = timbral.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
-                hsv = timbral.harmonic_spectral_variation(harm_mag)
+                harm_freq, harm_mag = fe.harmonics(nfft=8192, nht=0.15, f=f, S=stft, fs=downsample_rate, fmin=50, fmax=500, threshold=0.2)
+                hsc = fe.harmonic_spectral_centroid(harm_freq, harm_mag)
+                hsd = fe.harmonic_spectral_deviation(harm_mag)
+                hss = fe.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
+                hsv = fe.harmonic_spectral_variation(harm_mag)
                 feature17 = np.concatenate([hsc, hsd, hss, hsv], axis=0)
+                feature_list.append(feature17)
+                print(feature17)
+                # harm_freq, harm_mag = timbral.harmonics(frames=frames, fs=downsample_rate, S=stft, f=f, nfft=8192, fmin=50, fmax=500,  nht=0.15)
+                # hsc = timbral.harmonic_spectral_centroid(harm_freq, harm_mag)
+                # hsd = timbral.harmonic_spectral_deviation(harm_mag)
+                # hss = timbral.harmonic_spectral_spread(hsc, harm_freq, harm_mag)
+                # hsv = timbral.harmonic_spectral_variation(harm_mag)
+                # feature17 = np.concatenate([hsc, hsd, hss, hsv], axis=0)
                 feature_list.append(feature17)
             elif i == 18:
                 feature18 = fe.pitches_mag_CDSV(f=f, S=stft, fs=downsample_rate, fmin=50, fmax=downsample_rate/2, threshold=0.2)
@@ -179,6 +180,7 @@ def reload_and_feature(picall,
         for t in long[::-1]:
             if np.isnan(features[:, t]).any():
                 features = np.delete(features, t, 1)
+
         if average:                  # 使用统计量作为特征
             mean = np.mean(features, axis=1).reshape(1, features.shape[0])  # 原来的特征向量是列向量，这里转成行向量
             var = np.var(features, axis=1).reshape(1, features.shape[0])

@@ -1,12 +1,13 @@
 # -*- coding:utf8 -*-
-# @TIME     : 2019/3/31 22:58
+# @TIME     : 2019/5/7 9:35
 # @Author   : SuHao
-# @File     : control.py
+# @File     : control_vliad.py
 
 from load_and_preprocess import *
-# from reload_and_feature import *
-from reload_and_classify import *
-from load_and_feature_1 import *
+from reload_and_feature import *
+# from reload_and_classify import *
+from load_and_classify1 import *
+# from load_and_feature_2 import *
 
 
 '''
@@ -61,6 +62,8 @@ def control(**params):
     dist_p = params['dist_p']                       # 使用闵可夫斯基距离的附属参数
     pic_i = params['pic_i']                         # 用于调参时将结果存入不同的文件
     savefeature_i = params['savefeature_i']         # 用于存放不同的特征提取结果
+    feature_reduce = params['feature_reduce']       # 特征选择的特征个数
+    valid_k = params['valid_k']                     # 交叉验证折数，0表示使用留出法
 
 
     frame_length = int(frame_time / 1000 * downsample_rate)
@@ -72,17 +75,17 @@ def control(**params):
     savepreprocess = savedata + '\\' + 'preprocessing_result.csv'
     savefeature = savedata + '\\' + 'savefeature' + str(savefeature_i)
     params_path = {'saveprojectpath': saveprojectpath,          # 仿真结果保存文件夹
-              'savedata': savedata,                             # 缓存数据保存
-              'savepic': savepic,                               # 仿真图片保存
-              'savetestdata': savetestdata,                     # savedata的子文件夹，存放测试数据
-              'savepreprocess': savepreprocess,                 # savedata的子文件，cvs，存放预处理数据
-              'savefeature': savefeature,                       # savedata的子文件夹，存放特征提取的结果
-              'path': path,                                     # 数据集的路径
-              'downsample_rate': downsample_rate,               # 降采样率
-              'frame_time': frame_time,
-              'frame_length': frame_length,
-              'frame_overlap': frame_overlap,
-              'test_rate': test_rate}
+                   'savedata': savedata,                             # 缓存数据保存
+                   'savepic': savepic,                               # 仿真图片保存
+                   'savetestdata': savetestdata,                     # savedata的子文件夹，存放测试数据
+                   'savepreprocess': savepreprocess,                 # savedata的子文件，cvs，存放预处理数据
+                   'savefeature': savefeature,                       # savedata的子文件夹，存放特征提取的结果
+                   'path': path,                                     # 数据集的路径
+                   'downsample_rate': downsample_rate,               # 降采样率
+                   'frame_time': frame_time,
+                   'frame_length': frame_length,
+                   'frame_overlap': frame_overlap,
+                   'test_rate': test_rate}
 
     # _ = load_and_preprocess(
     #     amphasis=amphasis,                # bool，是否进行预加重
@@ -90,69 +93,84 @@ def control(**params):
     #     clip=clip,                        # bool， 是否进行silence remove
     #     factor=factor,                    # 0-1, silence remove门限
     #     **params_path)
-    reload_and_feature(
-        picall=picall,                    # 是否进行绘制所有特征的图像
-        feature_type=feature_type,        # 特征类型
-        average=average,                  # 是否使用所有帧的统计量作为特征而不使用每个帧
-        nmel=nmel,                        # 梅尔频率的个数
-        order_frft=order_frft,            # frft的阶数
-        nmfcc=nmfcc,                      # mfcc的系数个数
-        **params_path)
+    # reload_and_feature(
+    # picall=picall,                    # 是否进行绘制所有特征的图像
+    # feature_type=feature_type,        # 特征类型
+    # average=average,                  # 是否使用所有帧的统计量作为特征而不使用每个帧
+    # nmel=nmel,                        # 梅尔频率的个数
+    # order_frft=order_frft,            # frft的阶数
+    # nmfcc=nmfcc,                      # mfcc的系数个数
+    # **params_path)
     accuracy = []                           # 存放每次测试的准确率
-    for i in range(50):
-        accuracy.append(
-            reload_and_classify(
-                feature_type=feature_type,
-                feature_select=feature_select,
-                order=i,
-                PCAornot=PCAornot,
-                average=average,
-                neighbors=neighbors,
-                metric=metric,
-                weight_type=weight_type,
-                gaussian_bias=gaussian_bias,
-                dist_p=dist_p,
-                **params_path))
-        # print(accuracy[i])
+    X, Y = reload(feature_reduce=feature_reduce,
+                   feature_type=feature_type,
+                   feature_select=feature_select,
+                   order=0,
+                   PCAornot=PCAornot,
+                   average=average,
+                   neighbors=neighbors,
+                   metric=metric,
+                   weight_type=weight_type,
+                   gaussian_bias=gaussian_bias,
+                   dist_p=dist_p,
+                   **params_path)
+    # N = 50
+    # for i in range(N):
+    #     accuracy.append(
+    #          classify( X=X, Y=Y, valid_k=valid_k,
+    #             feature_type=feature_type,
+    #             feature_select=feature_select,
+    #             order=i,
+    #             PCAornot=PCAornot,
+    #             average=average,
+    #             neighbors=neighbors,
+    #             metric=metric,
+    #             weight_type=weight_type,
+    #             gaussian_bias=gaussian_bias,
+    #             dist_p=dist_p,
+    #             **params_path))
+    #     print(accuracy[i])
+    #
+    # with open(savepic+'\\params.txt', 'w') as f:
+    #     for key, value in params.items():
+    #         f.write(key)
+    #         f.write(': ')
+    #         f.write(str(value))
+    #         f.write('\n')
+    #     f.write('accuracy: ')
+    #     f.write(str(sum(accuracy) / N))
+    #
+    # return sum(accuracy) / N
 
-    with open(savepic+'\\params.txt', 'w') as f:
-        for key, value in params.items():
-            f.write(key)
-            f.write(': ')
-            f.write(str(value))
-            f.write('\n')
-        f.write('accuracy: ')
-        f.write(str(sum(accuracy) / 50))
-    print(sum(accuracy) / 50)
-    return sum(accuracy) / 50
 
-
-best = {'saveprojectpath': '..\\仿真结果\\post2012_测试错误代码',
-         'path': '..\\数据集2\\post2012',
-         'downsample_rate': 44100,
-         'frame_time': 30,
-         'overlap_time': 1,
-         'test_rate': 0.3,
-         'feature_type': [4,5,6,7,8,9,10,12],
-         'amphasis': False,
-         'down': False,
-         'clip': False,
-         'factor': 0.1,
-         'neml': 128,
-         'order_frft': [0.94 for i in range(19)],
-         'nmfcc': 13,
-         'picall': False,
-         'average': True,
-         'feature_select': None,
-         'PCAornot': False,
-         'neighbors': 1,
-         'metric': 'manhattan',
-         'weight_type': 'distance',          # 距离加权的类型：'distance' 'uniform' 'gaussian'
-         'gaussian_bias': 2,                 # 径向基函数的标准差
-         'dist_p': 1,
-         'pic_i': 10000000,
-         'savefeature_i': 1,
-         'index': 'none'}
+best = {'saveprojectpath': '..\\仿真结果\\post2012_best',
+        'path': '..\\数据集2\\post2012',
+        'downsample_rate': 44100,
+        'frame_time': 30,
+        'overlap_time': 1,
+        'test_rate': 0.3,
+        'feature_type': [1,2,3,4,5,6,7,8,9,10,12,14,15,16,17,18,19,20],
+        'amphasis': False,
+        'down': False,
+        'clip': False,
+        'factor': 0.1,
+        'neml': 128,
+        'order_frft': [0.94 for i in range(19)],
+        'nmfcc': 13,
+        'picall': False,
+        'average': True,
+        'feature_select': [1,2,3,4,5,6,7,8,9,10,12,15,16,17,19],
+        'PCAornot': False,
+        'neighbors': 1,
+        'metric': 'manhattan',
+        'weight_type': 'distance',          # 距离加权的类型：'distance' 'uniform' 'gaussian'
+        'gaussian_bias': 2,                 # 径向基函数的标准差
+        'dist_p': 1,
+        'pic_i': 1000,
+        'savefeature_i': 1,
+        'feature_reduce': 85,
+        'valid_k': 3,
+        'index': 'feature selection'}
 
 
 #best = {'saveprojectpath': '..\\仿真结果\\post2012_preprocess',
@@ -189,10 +207,12 @@ best = {'saveprojectpath': '..\\仿真结果\\post2012_测试错误代码',
 #         [1,2,3,4,5,6,7,8,9,10,15,16,17] # 基础 + mfcc +
 #         [1,2,3,4,5,6,7,8,9,10,15,16,17]  # 基础 + mfcc + 音色特征
 #         ]
-# pici = [101,102,103,104,105,106,107,108,109]
-# time = [1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9]
-# for i in range(29):
+# pici = [11,12,13,14,15]
+# for i in range(5):
+#     best['feature_type'] = type[i]
 #     best['pic_i'] = pici[i]
-#     best['overlap_time'] = time[i]
 control(**best)
 
+'''
+
+'''

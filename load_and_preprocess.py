@@ -57,6 +57,7 @@ def load_and_preprocess(amphasis,
             audio_data, sample_rate = librosa.load(
                 subpath + '\\' + subfilename[i], sr=None, mono=True, res_type='kaiser_best')  # 读取音频文件
             audio_data = librosa.util.normalize(audio_data, norm=np.inf, axis=0, threshold=None, fill=None)
+            # audio_data = audio_data[0:8820]
 ##########################################################################################################################
             if amphasis:
                 pre_amphasis = preprocessing.pre_emphasis(audio_data, 0.97,

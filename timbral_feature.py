@@ -20,7 +20,7 @@ import feature_extraction as fe
 # 时间序列的自相关函数 已检查
 def acf_fundamental_freq(x, fs, fmin, fmax):
     y = copy.deepcopy(x)        # 这里之前有错误
-    y = preprocessing.avoid_overlap(y, N=100, f=fmax+100, fs=fs, plot=False)  # fmax+100为的是留出一些裕度，因为低通滤波器不理想
+    y = preprocessing.avoid_overlap(y, N=10, f=fmax+100, fs=fs, plot=False)  # fmax+100为的是留出一些裕度，因为低通滤波器不理想
     # time_series = preprocessing.downsample(time_series, fs, 4410)
     nmin = int(fs / fmax)
     nmax = int(fs / fmin)

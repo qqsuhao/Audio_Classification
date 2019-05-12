@@ -50,10 +50,10 @@ def hilbert_filter(x, fs, order=201, pic=None):
         ax2.set_ylabel('Angle (radians)', color='g')
         ax2.grid()
         ax2.axis('tight')
-        plt.savefig(pic + 'hilbert_filter.jpg')
-        # plt.show()
-        plt.clf()
-        plt.close()
+        # plt.savefig(pic + 'hilbert_filter.jpg')
+        plt.show()
+        # plt.clf()
+        # plt.close()
     return envolope
 
 start = time.time()
@@ -88,5 +88,6 @@ plt.xlabel('time')
 plt.ylabel('mag')
 plt.title('envolope of music by scipy \n time:%.3f'%a)
 plt.tight_layout()
+plt.show()
 
 

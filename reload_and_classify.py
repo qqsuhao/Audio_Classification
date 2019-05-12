@@ -13,6 +13,7 @@ from scipy import stats
 import visualization as visual
 import random
 import csv
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 
 def gaussian(dist, a=1, b=0, c=0.8):
@@ -29,7 +30,8 @@ def gaussian(dist, a=1, b=0, c=0.8):
     return a * math.e ** (-(d - b) ** 2 / (2 * c ** 2))
 
 
-def reload_and_classify(feature_type,
+def reload_and_classify(
+                        feature_type,
                         feature_select,
                         order,
                         PCAornot,
@@ -102,7 +104,9 @@ def reload_and_classify(feature_type,
         for i in feature_select:
             a = feature_type.index(i)
             feature_use += [sum(feature_length[0:a])+j for j in list(range(0, feature_length[a]))]  # 这句代码写的真好，佩服自己，哈哈哈哈
-        feature_use += [sum(feature_length) + i for i in feature_use]
+        if average:
+            feature_use += [sum(feature_length) + i for i in feature_use]      # 如果使用
+
 
     if not os.path.exists(savepic):
         os.mkdir(savepic)    # 创建储存图片的文件夹
@@ -180,7 +184,7 @@ def reload_and_classify(feature_type,
     # ax.legend()
     # plt.show()
     #
-    # lda = LinearDiscriminantAnalysis(n_components=3)
+    # lda = LinearDiscriminantAnalysis(n_components=10)
     # lda.fit(train_X, train_Y)
     # X_new = lda.fit_transform(train_X, train_Y)
     # plt.scatter(np.arange(0, len(X_new)), X_new, marker='o', c=train_Y)

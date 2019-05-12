@@ -1,12 +1,12 @@
 # -*- coding:utf8 -*-
-# @TIME     : 2019/3/31 22:58
+# @TIME     : 2019/5/6 22:22
 # @Author   : SuHao
-# @File     : control.py
+# @File     : control3.py
 
 from load_and_preprocess import *
-# from reload_and_feature import *
+from reload_and_feature import *
 from reload_and_classify import *
-from load_and_feature_1 import *
+# from load_and_feature_2 import *
 
 
 '''
@@ -72,17 +72,17 @@ def control(**params):
     savepreprocess = savedata + '\\' + 'preprocessing_result.csv'
     savefeature = savedata + '\\' + 'savefeature' + str(savefeature_i)
     params_path = {'saveprojectpath': saveprojectpath,          # 仿真结果保存文件夹
-              'savedata': savedata,                             # 缓存数据保存
-              'savepic': savepic,                               # 仿真图片保存
-              'savetestdata': savetestdata,                     # savedata的子文件夹，存放测试数据
-              'savepreprocess': savepreprocess,                 # savedata的子文件，cvs，存放预处理数据
-              'savefeature': savefeature,                       # savedata的子文件夹，存放特征提取的结果
-              'path': path,                                     # 数据集的路径
-              'downsample_rate': downsample_rate,               # 降采样率
-              'frame_time': frame_time,
-              'frame_length': frame_length,
-              'frame_overlap': frame_overlap,
-              'test_rate': test_rate}
+                   'savedata': savedata,                             # 缓存数据保存
+                   'savepic': savepic,                               # 仿真图片保存
+                   'savetestdata': savetestdata,                     # savedata的子文件夹，存放测试数据
+                   'savepreprocess': savepreprocess,                 # savedata的子文件，cvs，存放预处理数据
+                   'savefeature': savefeature,                       # savedata的子文件夹，存放特征提取的结果
+                   'path': path,                                     # 数据集的路径
+                   'downsample_rate': downsample_rate,               # 降采样率
+                   'frame_time': frame_time,
+                   'frame_length': frame_length,
+                   'frame_overlap': frame_overlap,
+                   'test_rate': test_rate}
 
     # _ = load_and_preprocess(
     #     amphasis=amphasis,                # bool，是否进行预加重
@@ -91,13 +91,13 @@ def control(**params):
     #     factor=factor,                    # 0-1, silence remove门限
     #     **params_path)
     reload_and_feature(
-        picall=picall,                    # 是否进行绘制所有特征的图像
-        feature_type=feature_type,        # 特征类型
-        average=average,                  # 是否使用所有帧的统计量作为特征而不使用每个帧
-        nmel=nmel,                        # 梅尔频率的个数
-        order_frft=order_frft,            # frft的阶数
-        nmfcc=nmfcc,                      # mfcc的系数个数
-        **params_path)
+    picall=picall,                    # 是否进行绘制所有特征的图像
+    feature_type=feature_type,        # 特征类型
+    average=average,                  # 是否使用所有帧的统计量作为特征而不使用每个帧
+    nmel=nmel,                        # 梅尔频率的个数
+    order_frft=order_frft,            # frft的阶数
+    nmfcc=nmfcc,                      # mfcc的系数个数
+    **params_path)
     accuracy = []                           # 存放每次测试的准确率
     for i in range(50):
         accuracy.append(
@@ -113,7 +113,7 @@ def control(**params):
                 gaussian_bias=gaussian_bias,
                 dist_p=dist_p,
                 **params_path))
-        # print(accuracy[i])
+        print(accuracy[i])
 
     with open(savepic+'\\params.txt', 'w') as f:
         for key, value in params.items():
@@ -123,76 +123,35 @@ def control(**params):
             f.write('\n')
         f.write('accuracy: ')
         f.write(str(sum(accuracy) / 50))
-    print(sum(accuracy) / 50)
+
     return sum(accuracy) / 50
 
 
-best = {'saveprojectpath': '..\\仿真结果\\post2012_测试错误代码',
-         'path': '..\\数据集2\\post2012',
-         'downsample_rate': 44100,
-         'frame_time': 30,
-         'overlap_time': 1,
-         'test_rate': 0.3,
-         'feature_type': [4,5,6,7,8,9,10,12],
-         'amphasis': False,
-         'down': False,
-         'clip': False,
-         'factor': 0.1,
-         'neml': 128,
-         'order_frft': [0.94 for i in range(19)],
-         'nmfcc': 13,
-         'picall': False,
-         'average': True,
-         'feature_select': None,
-         'PCAornot': False,
-         'neighbors': 1,
-         'metric': 'manhattan',
-         'weight_type': 'distance',          # 距离加权的类型：'distance' 'uniform' 'gaussian'
-         'gaussian_bias': 2,                 # 径向基函数的标准差
-         'dist_p': 1,
-         'pic_i': 10000000,
-         'savefeature_i': 1,
-         'index': 'none'}
-
-
-#best = {'saveprojectpath': '..\\仿真结果\\post2012_preprocess',
-#        'path': '..\\数据集2\\post2012',
-#        'downsample_rate': 22050,
-#        'frame_time': 30,
-#        'overlap_time': 1,
-#        'test_rate': 0.3,
-#        'feature_type': [1,2,3,4,5,6,7,8,9,10,12,14,15,16,17,18,19,20],
-#        'amphasis': False,
-#        'down': True,
-#        'clip': False,
-#        'factor': 0.1,
-#        'neml': 128,
-#        'order_frft': [0.94 for i in range(19)],
-#        'nmfcc': 13,
-#        'picall': False,
-#        'average': True,
-#        'feature_select': [1,2,3,4,5,6,7,8,9,10,15,16,19],
-#        'PCAornot': False,
-#        'neighbors': 1,
-#        'metric': 'manhattan',
-#        'weight_type': 'distance',          # 距离加权的类型：'distance' 'uniform' 'gaussian'
-#        'gaussian_bias': 2,                 # 径向基函数的标准差
-#        'dist_p': 1,
-#        'pic_i': 1,
-#        'savefeature_i': 1,
-#        'index': 'none'}
-
-# type = [[1,2,3,4,5,6,7,8,9,10],      # 基础 + mfcc
-#         [1,2,3,4,5,6,7,8,9,10,18],   # 基础 + mfcc + 之前错误的谐波
-#         [1,2,3,4,5,6,7,8,9,10,19],   # 基础 + mfcc + 一阶mfcc
-#         [1,2,3,4,5,6,7,8,9,10,19,20], # 基础 + mfcc + 一阶mfcc + 二阶
-#         [1,2,3,4,5,6,7,8,9,10,15,16,17] # 基础 + mfcc +
-#         [1,2,3,4,5,6,7,8,9,10,15,16,17]  # 基础 + mfcc + 音色特征
-#         ]
-# pici = [101,102,103,104,105,106,107,108,109]
-# time = [1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9]
-# for i in range(29):
-#     best['pic_i'] = pici[i]
-#     best['overlap_time'] = time[i]
+best = {'saveprojectpath': '..\\仿真结果\\post2012_only200ms',
+        'path': '..\\数据集2\\post2012',
+        'downsample_rate': 44100,
+        'frame_time': 30,
+        'overlap_time': 29,
+        'test_rate': 0.3,
+        'feature_type': [1,2,3,4,5,6,7,8,9,10,12,14,15,16,17,18,19,20],
+        'amphasis': False,
+        'down': False,
+        'clip': False,
+        'factor': 0.1,
+        'neml': 128,
+        'order_frft': [0.94 for i in range(19)],
+        'nmfcc': 13,
+        'picall': False,
+        'average': True,
+        'feature_select': [1,2,3,4,5,6,7,8,9,10,12,15,16,17,19],
+        'PCAornot': False,
+        'neighbors': 1,
+        'metric': 'manhattan',
+        'weight_type': 'distance',          # 距离加权的类型：'distance' 'uniform' 'gaussian'
+        'gaussian_bias': 2,                 # 径向基函数的标准差
+        'dist_p': 1,
+        'pic_i': 201,
+        'savefeature_i': 2,
+        'index': 'none'}
 control(**best)
-
+# 只使用音频信号的前200ms

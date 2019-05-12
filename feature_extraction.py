@@ -304,7 +304,7 @@ def stfrft(frames, p=1, pic=None):
                                np.ones((frames_win.shape[1], )).astype('float32'))))
     # stfrft = stfrft[::-1, :]
     if frames.shape[0] % 2 == 0:
-        stfrft = stfrft[:, frames_win.shape[0] / 2 - 1:]
+        stfrft = stfrft[:, int(frames_win.shape[0] / 2) - 1:]
     else:
         stfrft = stfrft[:, frames_win.shape[0] // 2 + 1:]
     stfrft = stfrft.T
